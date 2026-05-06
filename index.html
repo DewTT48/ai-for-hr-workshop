@@ -554,67 +554,296 @@ textarea, button, input, select,
 }
 
 
-/* --- v13 mobile navigation safety --- */
-.mobile-float-nav{
-  display:none;
-  position:fixed;
-  z-index:9998;
-  left:50%;
-  bottom:calc(10px + env(safe-area-inset-bottom, 0px));
-  transform:translateX(-50%);
-  gap:8px;
-  padding:6px;
-  border-radius:999px;
-  background:rgba(3,10,20,.82);
-  border:1px solid rgba(255,255,255,.14);
-  backdrop-filter:blur(8px);
-  box-shadow:0 12px 28px rgba(0,0,0,.35);
-}
-.mobile-float-nav button{
-  border:1px solid rgba(255,255,255,.16);
-  background:rgba(255,255,255,.10);
-  color:#fff;
-  border-radius:999px;
-  padding:8px 13px;
-  font-weight:800;
-  font-family:'IBM Plex Sans Thai','Sarabun','Tahoma',Arial,sans-serif;
-}
-.mobile-float-nav button:nth-child(3){
-  background:rgba(255,216,77,.20);
-  border-color:rgba(255,216,77,.42);
-  color:#ffe58f;
+/* --- v14 responsive fit while keeping desktop-style navigation --- */
+@supports (height: 100dvh){
+  html, body, .deck{
+    height:100dvh;
+    min-height:100dvh;
+  }
 }
 
-/* Mobile browsers often cannot use Fullscreen reliably.
-   In landscape, reserve space for floating navigation and keep it visible. */
-@media (max-height: 520px) and (orientation: landscape){
-  .mobile-float-nav{display:flex}
-  .footer{
-    display:none!important;
-  }
-  .deck{
-    grid-template-rows:auto 1fr;
-    height:100svh;
-    min-height:100svh;
-  }
+/* Mobile and tablet landscape: same footer/navigation design, only compacted */
+@media (max-width: 1180px) and (orientation: landscape){
   html,body{
-    height:100svh;
-    min-height:100svh;
     overflow:hidden;
   }
-  .slide{
-    padding-bottom:calc(54px + env(safe-area-inset-bottom, 0px));
+  .deck{
+    grid-template-rows:auto 1fr auto;
+    height:100dvh;
+    min-height:100dvh;
   }
-  .toast{
-    bottom:calc(62px + env(safe-area-inset-bottom, 0px));
+  .topbar{
+    padding:7px 12px;
+    gap:8px;
+  }
+  .brand{
+    font-size:16px;
+    gap:7px;
+    max-width:34vw;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .pac{
+    width:20px;
+    height:20px;
+    min-width:20px;
+  }
+  .badge{
+    padding:5px 8px;
+    font-size:11px;
+  }
+  .topbar .badge:nth-of-type(2),
+  .topbar .badge:nth-of-type(3){
+    display:none;
+  }
+  .progress-wrap{
+    min-width:220px;
+    gap:7px;
+  }
+  .level-pill{
+    padding:5px 8px;
+    font-size:11px;
+  }
+  .progress{
+    height:9px;
+  }
+
+  .footer{
+    display:flex!important;
+    padding:7px 10px;
+    gap:8px;
+    min-height:48px;
+  }
+  .navgroup{
+    gap:6px;
+  }
+  .navbtn{
+    padding:8px 10px;
+    font-size:12px;
+  }
+  .counter{
+    font-size:12px;
+    min-width:52px;
+    text-align:center;
+  }
+
+  .slide{
+    padding:6px 10px;
+  }
+  .screen{
+    max-width:100vw;
+    gap:8px;
+  }
+  .kicker{
+    padding:5px 9px;
+    font-size:11px;
+  }
+  .dot{
+    width:7px;
+    height:7px;
+  }
+  .title{
+    font-size:clamp(22px,4.2vw,40px);
+    line-height:1.04;
+  }
+  body.lang-th .title{
+    line-height:1.08;
+  }
+  .subtitle{
+    font-size:clamp(12px,1.9vw,17px);
+    line-height:1.4;
+    max-width:94vw;
+  }
+  .card{
+    border-radius:16px;
+    padding:12px;
+  }
+  .big,
+  .card .big,
+  .step .big,
+  .ghost .big,
+  .node b{
+    font-size:clamp(15px,2.3vw,22px);
+    line-height:1.18;
+  }
+  .med,
+  .card .med{
+    font-size:clamp(12px,1.7vw,15px);
+    line-height:1.42;
+  }
+  .small,
+  .card .small,
+  .step .small,
+  .node .small,
+  .ghost .small{
+    font-size:clamp(10.5px,1.45vw,13px);
+    line-height:1.4;
+  }
+  ul,ol{
+    margin-top:4px;
+    margin-left:15px;
+    line-height:1.4;
+  }
+  .card li{
+    font-size:clamp(10.5px,1.45vw,13px);
+    line-height:1.4;
+  }
+  .note{
+    padding:8px 10px;
+    border-radius:12px;
+    font-size:12px;
+    line-height:1.42;
+  }
+  .grid{
+    gap:9px;
+  }
+  .three{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+  .two{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  .four{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  }
+  .map{
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    gap:8px;
+  }
+  .node{
+    min-height:105px;
+    padding:11px;
+    border-radius:14px;
+  }
+  .lvl{
+    font-size:9px;
+    padding:3px 6px;
+  }
+  .framework{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:8px;
+  }
+  .step{
+    min-height:108px;
+    padding:11px;
+    border-radius:14px;
+  }
+  .step .num{
+    width:27px;
+    height:27px;
+    font-size:12px;
+    margin-bottom:6px;
+  }
+  .split{
+    grid-template-columns:1fr 1fr!important;
+    gap:9px;
+  }
+  .workspace{
+    gap:6px;
+  }
+  .wrow{
+    grid-template-columns:86px 1fr!important;
+    gap:6px;
+  }
+  .wrow label{
+    font-size:11px;
+    padding-top:6px;
+  }
+  .textarea{
+    min-height:44px;
+    border-radius:10px;
+    padding:7px 8px;
+    font-size:11px;
+    line-height:1.32;
+  }
+  .status{
+    font-size:10.5px;
+    margin-top:1px;
+  }
+  .btns{
+    gap:6px;
+  }
+  .btn{
+    padding:8px 10px;
+    font-size:11.5px;
+  }
+  .code{
+    max-height:132px;
+    border-radius:12px;
+    padding:8px;
+    font-size:10.5px;
+    line-height:1.34;
+  }
+  .quiz-option{
+    padding:8px 10px;
+    margin-top:5px;
+    font-size:12px;
+    border-radius:11px;
+  }
+  .ghost-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:9px;
+  }
+  .ghost{
+    min-height:122px;
+    padding:12px;
+    border-radius:15px;
+  }
+  .ghost .face{
+    font-size:24px;
+    margin-bottom:4px;
+  }
+  .clickhint{
+    font-size:9.5px;
+    padding:3px 6px;
   }
 }
 
-/* Slightly taller landscape phones/tablets keep footer, but also show backup nav */
-@media (min-height:521px) and (max-width:950px) and (orientation: landscape){
-  .mobile-float-nav{display:flex}
+/* Very short phone landscape: hide only non-essential buttons, not the footer style */
+@media (max-height: 430px) and (orientation: landscape){
+  .topbar{
+    padding:5px 8px;
+  }
+  .footer{
+    padding:5px 8px;
+    min-height:42px;
+  }
+  .footer .navgroup:first-child .navbtn:nth-child(3){
+    display:none;
+  }
+  .footer .navgroup:last-child .navbtn:nth-child(2){
+    display:none;
+  }
+  .navbtn{
+    padding:7px 9px;
+    font-size:11px;
+  }
+  .counter{
+    font-size:11px;
+  }
   .slide{
-    padding-bottom:calc(56px + env(safe-area-inset-bottom, 0px));
+    padding:4px 8px;
+  }
+  .screen{
+    gap:6px;
+  }
+  .title{
+    font-size:clamp(20px,4.6vw,34px);
+  }
+  .subtitle{
+    font-size:clamp(11px,1.8vw,14px);
+  }
+  .card{
+    padding:9px;
+  }
+  .code{
+    max-height:105px;
+    font-size:10px;
+  }
+  .textarea{
+    min-height:38px;
+    font-size:10.5px;
   }
 }
 
@@ -988,38 +1217,18 @@ Guardrail: Do not use dashboard indicators to make an automatic promotion decisi
 <div class="navgroup"><button class="navbtn lang-toggle" onclick="toggleLanguage()">Thai</button><button class="navbtn" onclick="window.print()">Print / PDF</button><button class="navbtn" onclick="toggleFull()">Full screen</button><button class="navbtn" id="nextBtn" onclick="next()">Next ▶</button></div>
 </div>
 </div>
-
-<div class="mobile-float-nav" id="mobileFloatNav">
-  <button onclick="prev()">◀</button>
-  <button onclick="go(1)">Map</button>
-  <button onclick="next()">▶</button>
-</div>
-
 <div class="toast" id="toast"></div>
 <script>
 const slides=[...document.querySelectorAll('.slide')];let idx=0;
 const bar=document.getElementById('bar'),barText=document.getElementById('barText'),counter=document.getElementById('counter'),levelPill=document.getElementById('levelPill');
-function avail(){
-  const top=document.querySelector('.topbar'),foot=document.querySelector('.footer');
-  const vv=window.visualViewport;const ww=vv?vv.width:window.innerWidth;const wh=vv?vv.height:window.innerHeight;
-  const isMobileLandscape = window.matchMedia('(max-height: 520px) and (orientation: landscape)').matches;
-  const footH = isMobileLandscape ? 0 : (foot?.offsetHeight||0);
-  const floatReserve = isMobileLandscape ? 52 : 0;
-  return{w:ww-24,h:wh-(top?.offsetHeight||0)-footH-floatReserve-16};
-}
+function avail(){const top=document.querySelector('.topbar'),foot=document.querySelector('.footer');const vv=window.visualViewport;const ww=vv?vv.width:window.innerWidth;const wh=vv?vv.height:window.innerHeight;return{w:ww-24,h:wh-(top?.offsetHeight||0)-(foot?.offsetHeight||0)-16};}
 function clearFit(slide){slide.classList.remove('compact','ultra');const s=slide.querySelector('.screen');if(s){s.style.zoom='1';s.style.marginTop='0px';}}
 function metrics(slide){const s=slide.querySelector('.screen');return s?{w:s.scrollWidth,h:s.scrollHeight}:{w:0,h:0};}
 function fit(){const slide=slides[idx];if(!slide)return;clearFit(slide);let a=avail(),m=metrics(slide);if(m.w>a.w||m.h>a.h)slide.classList.add('compact');m=metrics(slide);if(m.w>a.w||m.h>a.h){slide.classList.remove('compact');slide.classList.add('ultra');m=metrics(slide);}const scale=Math.min(1,a.w/Math.max(1,m.w),a.h/Math.max(1,m.h));const s=slide.querySelector('.screen');if(s){s.style.zoom=String(scale);s.style.marginTop=Math.max(0,(a.h-m.h*scale)/2)+'px';}}
 function update(){slides.forEach((s,i)=>s.classList.toggle('active',i===idx));const pct=Math.round(idx/(slides.length-1)*100);bar.style.width=pct+'%';barText.textContent=pct+'%';counter.textContent=(idx+1)+' / '+slides.length;levelPill.textContent=slides[idx].dataset.level||'';document.getElementById('prevBtn').disabled=idx===0;document.getElementById('nextBtn').disabled=idx===slides.length-1;localStorage.setItem('hrmaze_v3_idx',idx);setTimeout(fit,40);setTimeout(fit,160);refreshStatuses();}
 function go(i){idx=Math.max(0,Math.min(slides.length-1,i));update()}function next(){go(idx+1)}function prev(){go(idx-1)}
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',1800)}
-function toggleFull(){
-  if(!document.fullscreenEnabled || !document.documentElement.requestFullscreen){
-    toast(window.__LANG__==='th' ? 'มือถือบางรุ่นไม่รองรับ Full screen ใน browser นี้ ให้หมุนแนวนอนและใช้ปุ่มลอยด้านล่างแทน' : 'Fullscreen is not supported on this mobile browser. Rotate landscape and use the floating navigation.');
-    return;
-  }
-  if(!document.fullscreenElement){document.documentElement.requestFullscreen?.()}else{document.exitFullscreen?.()}
-}
+function toggleFull(){if(!document.fullscreenElement){document.documentElement.requestFullscreen?.()}else{document.exitFullscreen?.()}}
 function toggleNotes(){document.body.classList.toggle('show-notes');setTimeout(fit,60)}
 function markQuiz(el,correct){[...el.parentElement.querySelectorAll('.quiz-option')].forEach(x=>x.classList.remove('correct','wrong'));el.classList.add(correct?'correct':'wrong');toast(correct?'Correct':'Try the other option')}
 function setupReveals(){document.querySelectorAll('.reveal').forEach(el=>el.addEventListener('click',()=>{const h=el.querySelector('.hidden');if(h){h.classList.toggle('show');el.classList.add('revealed');setTimeout(fit,50)}}))}
