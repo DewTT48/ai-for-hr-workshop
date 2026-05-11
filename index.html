@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>AI for HR — Navigate the Maze v4 Enhanced</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#06111f;--bg2:#0b2342;--panel:#12294b;--panel2:#18345e;--text:#eff6ff;--muted:#bfd1ea;
+  --yellow:#ffd84d;--cyan:#43d8ff;--green:#64dc94;--pink:#ff72af;--orange:#ffa35d;--red:#ff7878;
+  --shadow:0 16px 36px rgba(0,0,0,.34);--radius:22px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top,#173b70 0%,#0b2342 38%,#06111f 100%);color:var(--text);overflow:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.72;background:
+linear-gradient(90deg,transparent 0 9%, rgba(67,216,255,.055) 9% 10%, transparent 10% 19%, rgba(67,216,255,.055) 19% 20%, transparent 20% 29%, rgba(67,216,255,.055) 29% 30%, transparent 30% 39%, rgba(67,216,255,.055) 39% 40%, transparent 40% 49%, rgba(67,216,255,.055) 49% 50%, transparent 50% 59%, rgba(67,216,255,.055) 59% 60%, transparent 60% 69%, rgba(67,216,255,.055) 69% 70%, transparent 70% 79%, rgba(67,216,255,.055) 79% 80%, transparent 80% 89%, rgba(67,216,255,.055) 89% 90%, transparent 90%),
+linear-gradient(transparent 0 11%, rgba(67,216,255,.045) 11% 12%, transparent 12% 23%, rgba(67,216,255,.045) 23% 24%, transparent 24% 35%, rgba(67,216,255,.045) 35% 36%, transparent 36% 47%, rgba(67,216,255,.045) 47% 48%, transparent 48% 59%, rgba(67,216,255,.045) 59% 60%, transparent 60% 71%, rgba(67,216,255,.045) 71% 72%, transparent 72% 83%, rgba(67,216,255,.045) 83% 84%, transparent 84%)}
+.deck{position:relative;z-index:1;height:100%;display:grid;grid-template-rows:auto 1fr auto}
+.topbar,.footer{display:flex;align-items:center;gap:12px;padding:10px 18px;background:rgba(3,10,20,.88);backdrop-filter:blur(8px);border-color:rgba(255,255,255,.08);box-shadow:var(--shadow);flex-wrap:wrap}.topbar{border-bottom:1px solid rgba(255,255,255,.08)}.footer{border-top:1px solid rgba(255,255,255,.08);justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px}.pac{width:26px;height:26px;border-radius:50%;background:conic-gradient(from 35deg,var(--yellow) 0 305deg,transparent 305deg);box-shadow:0 0 18px rgba(255,216,77,.42)}
+.badge{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);font-size:13px;font-weight:700;color:var(--muted)}
+.progress-wrap{margin-left:auto;display:flex;align-items:center;gap:10px;min-width:320px;flex:1}.progress{height:12px;flex:1;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;border:1px solid rgba(255,255,255,.09)}.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--yellow),var(--orange),var(--pink));transition:.35s}.level-pill{padding:8px 12px;border-radius:999px;background:rgba(255,216,77,.14);border:1px solid rgba(255,216,77,.35);font-weight:800;font-size:13px;color:#ffe792}
+.slide{display:none;height:100%;padding:10px 16px 12px;overflow:hidden}.slide.active{display:block}
+.screen{max-width:1260px;height:100%;margin:0 auto;display:grid;grid-auto-rows:min-content;align-content:center;gap:12px;transform-origin:top center}
+.kicker{display:inline-flex;align-items:center;gap:9px;justify-self:start;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);font-weight:800;color:var(--muted);font-size:13px}.center .kicker{justify-self:center}.dot{width:10px;height:10px;border-radius:50%;background:var(--yellow);box-shadow:0 0 12px rgba(255,216,77,.5)}
+h1,h2,h3,p{margin:0}.title{font-size:clamp(30px,3.7vw,54px);font-weight:900;line-height:1.04;letter-spacing:-.02em}.subtitle{font-size:clamp(16px,1.45vw,22px);line-height:1.48;color:var(--muted);max-width:1000px}.center{text-align:center}
+.card{background:linear-gradient(180deg,rgba(20,47,87,.96),rgba(10,27,49,.96));border:1px solid rgba(255,255,255,.09);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;position:relative;overflow:hidden}.card:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--yellow),var(--cyan),var(--pink))}
+.card.yellow{background:linear-gradient(180deg,rgba(255,216,77,.14),rgba(255,216,77,.05))}.card.green{background:linear-gradient(180deg,rgba(100,220,148,.14),rgba(100,220,148,.05))}.card.pink{background:linear-gradient(180deg,rgba(255,114,175,.15),rgba(255,114,175,.05))}.card.cyan{background:linear-gradient(180deg,rgba(67,216,255,.14),rgba(67,216,255,.05))}.card.light{background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(240,247,255,.96));color:#11233c}
+.grid{display:grid;gap:14px}.five{grid-template-columns:repeat(5,minmax(0,1fr))}.two{grid-template-columns:repeat(2,minmax(0,1fr))}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.split{display:grid;grid-template-columns:1.08fr .92fr;gap:16px;align-items:stretch}.big{font-size:clamp(20px,2vw,28px);font-weight:850;line-height:1.25}.med{font-size:clamp(14px,1.18vw,18px);line-height:1.55}.small{font-size:13px;line-height:1.5;color:var(--muted)}ul,ol{margin:8px 0 0 18px;padding:0;line-height:1.55}
+.note{padding:14px 16px;border-radius:16px;background:rgba(255,216,77,.08);border:1px solid rgba(255,216,77,.2);color:#fff1b8;font-size:14px;line-height:1.5}
+.map{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}.node{padding:18px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);min-height:132px;cursor:pointer;box-shadow:var(--shadow)}.node b{display:block;font-size:18px;margin:6px 0}.lvl{display:inline-block;padding:4px 8px;border-radius:999px;background:rgba(255,216,77,.15);color:#ffe28a;font-size:12px;font-weight:800}
+.framework{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}.step{padding:14px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);min-height:145px}.num{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--yellow);color:#16293d;font-weight:900;margin-bottom:10px}
+.workspace{display:grid;gap:10px}.wrow{display:grid;grid-template-columns:130px 1fr;gap:10px;align-items:start}.wrow label{font-weight:800;color:#d8e8ff;padding-top:9px}.textarea{width:100%;min-height:82px;resize:none;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(4,12,22,.56);color:#fff;padding:10px 12px;font-size:14px;line-height:1.45;font-family:inherit}.textarea::placeholder{color:#7f91aa}
+.status{font-size:13px;color:#ffdca0;margin-top:2px}.btns{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:999px;padding:11px 16px;font-weight:800;font-size:14px;cursor:pointer;color:#16263a;background:var(--yellow);box-shadow:0 8px 20px rgba(255,216,77,.18)}.btn.secondary{background:rgba(255,255,255,.09);color:#fff;border:1px solid rgba(255,255,255,.12);box-shadow:none}.btn.green{background:var(--green)}.btn.cyan{background:var(--cyan)}.btn.pink{background:var(--pink);color:#fff}.btn:disabled{opacity:.4;cursor:not-allowed}
+.code{white-space:pre-wrap;background:#05111f;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px;font:13px/1.45 Consolas,Monaco,monospace;overflow:auto;max-height:500px;color:#ebf5ff}
+.quiz-option{padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);cursor:pointer}.quiz-option.correct{outline:2px solid var(--green);background:rgba(96,219,144,.18)}.quiz-option.wrong{outline:2px solid var(--red);background:rgba(255,120,120,.15)}
+.reveal{cursor:pointer}.hidden{display:none;margin-top:10px}.show{display:block}.clickhint{display:inline-block;margin-top:8px;font-size:12px;color:#ffe28a;background:rgba(255,216,77,.12);border:1px solid rgba(255,216,77,.2);padding:5px 9px;border-radius:999px}
+.ghost-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.ghost{padding:18px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);min-height:180px;cursor:pointer;box-shadow:var(--shadow)}.ghost .face{font-size:36px;display:block;margin-bottom:8px}.ghost.done{background:rgba(96,219,144,.14);border-color:rgba(96,219,144,.38)}
+.navgroup{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.navbtn{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.08);color:#fff;padding:10px 14px;border-radius:999px;font-weight:800;cursor:pointer}.navbtn:disabled{opacity:.45;cursor:not-allowed}.counter{font-weight:800;color:var(--muted)}
+.facilitator{display:none;background:rgba(67,216,255,.08);border-color:rgba(67,216,255,.18);color:#d9f8ff}.show-notes .facilitator{display:block}.toast{position:fixed;right:22px;bottom:78px;background:#08111d;color:#fff;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.15);display:none;z-index:50}
+.compact .title{font-size:clamp(26px,3.2vw,46px)}.compact .subtitle{font-size:clamp(15px,1.25vw,19px)}.compact .card,.compact .node,.compact .ghost{padding:15px}.compact .step{min-height:126px;padding:12px}.compact .textarea{min-height:58px;font-size:13px}.compact .code{font-size:12px;line-height:1.36;max-height:340px}.ultra .title{font-size:clamp(22px,2.8vw,40px)}.ultra .subtitle{font-size:clamp(14px,1.1vw,17px)}.ultra .card,.ultra .node,.ultra .ghost{padding:12px}.ultra .step{min-height:110px;padding:10px}.ultra .textarea{min-height:46px;font-size:12px}.ultra .code{font-size:11px;line-height:1.28;max-height:270px}
+@media(max-width:1100px){.map,.framework,.two,.three,.four,.five,.split,.ghost-grid,.wrow{grid-template-columns:1fr}.progress-wrap{flex-basis:100%;order:3;margin-left:0}.slide{padding:8px 12px}}
+@media print{@page{size:A4 landscape;margin:0}html,body{width:297mm;height:210mm;overflow:visible;-webkit-print-color-adjust:exact;print-color-adjust:exact}.topbar,.footer,.toast{display:none!important}.deck{display:block;height:auto}.slide{display:block!important;break-after:page;height:210mm;padding:8mm 10mm;background:radial-gradient(circle at top,#173b70 0%,#0b2342 38%,#06111f 100%)!important}.slide:last-child{break-after:auto}.facilitator,.hidden{display:block!important}.screen{zoom:.72!important;transform:none!important;margin-top:0!important}}
+
+/* --- Subtle animation layer v5 --- */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(14px); }
+  to { opacity:1; transform:translateY(0); }
+}
+@keyframes softGlow {
+  0%,100% { box-shadow:0 0 0 rgba(255,216,77,0), var(--shadow); }
+  50% { box-shadow:0 0 18px rgba(255,216,77,.18), var(--shadow); }
+}
+@keyframes dotPulse {
+  0%,100% { transform:scale(1); opacity:.75; }
+  50% { transform:scale(1.25); opacity:1; }
+}
+@keyframes pacChomp {
+  0%,100% { clip-path:polygon(50% 50%,100% 0,100% 100%,50% 100%,0 100%,0 0); }
+  50% { clip-path:polygon(50% 50%,100% 18%,100% 82%,50% 100%,0 100%,0 0); }
+}
+@keyframes progressShine {
+  from { transform:translateX(-100%); opacity:.0; }
+  35% { opacity:.75; }
+  to { transform:translateX(240%); opacity:0; }
+}
+.pac{animation:pacChomp 1.2s ease-in-out infinite}
+.dot{animation:dotPulse 1.8s ease-in-out infinite}
+.progress>div{position:relative;overflow:hidden}
+.progress>div:after{content:"";position:absolute;inset:0;width:35%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);animation:progressShine 3.8s ease-in-out infinite}
+.slide.active .kicker,
+.slide.active .title,
+.slide.active .subtitle,
+.slide.active .note,
+.slide.active .card,
+.slide.active .node,
+.slide.active .step,
+.slide.active .ghost,
+.slide.active .framework,
+.slide.active .map,
+.slide.active .split,
+.slide.active .grid{
+  animation:fadeUp .42s ease-out both;
+}
+.slide.active .title{animation-delay:.04s}
+.slide.active .subtitle{animation-delay:.08s}
+.slide.active .card:nth-child(1), .slide.active .node:nth-child(1), .slide.active .step:nth-child(1), .slide.active .ghost:nth-child(1){animation-delay:.10s}
+.slide.active .card:nth-child(2), .slide.active .node:nth-child(2), .slide.active .step:nth-child(2), .slide.active .ghost:nth-child(2){animation-delay:.15s}
+.slide.active .card:nth-child(3), .slide.active .node:nth-child(3), .slide.active .step:nth-child(3), .slide.active .ghost:nth-child(3){animation-delay:.20s}
+.slide.active .card:nth-child(4), .slide.active .node:nth-child(4), .slide.active .step:nth-child(4){animation-delay:.25s}
+.slide.active .card:nth-child(5), .slide.active .node:nth-child(5), .slide.active .step:nth-child(5){animation-delay:.30s}
+.slide.active .card:nth-child(6), .slide.active .step:nth-child(6){animation-delay:.35s}
+.node:hover,.ghost:hover,.quiz-option:hover,.reveal:hover{transform:translateY(-2px);border-color:rgba(255,216,77,.38);transition:.18s ease}
+.slide.active[data-level="FINAL BOSS"] .card.yellow,
+.slide.active[data-level="MISSION 2"] .card.yellow,
+.slide.active[data-level="MISSION 3"] .card.yellow{
+  animation:fadeUp .42s ease-out both, softGlow 3.2s ease-in-out .6s infinite;
+}
+.clickhint{animation:dotPulse 2.2s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+
+
+/* --- v6 readability and interaction refinements --- */
+.nowrap{white-space:nowrap}
+.card .small,.step .small,.node .small,.ghost .small{font-size:15px;line-height:1.55}
+.card .med{font-size:clamp(16px,1.28vw,20px)}
+.card .big,.step .big,.node b,.ghost .big{font-size:clamp(22px,2.1vw,30px)}
+.card li{font-size:clamp(15px,1.18vw,19px);line-height:1.58}
+.framework{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.step{min-height:172px;padding:20px}
+.step .num{width:40px;height:40px;font-size:18px}
+.slide.active[data-level="FRAMEWORK"] .step,
+.slide.active[data-level="FINAL BOSS"] .step{animation-duration:.36s}
+.slide.active[data-level="FRAMEWORK"] .framework,
+.slide.active[data-level="FINAL BOSS"] .framework{max-width:1120px;justify-self:center;width:100%}
+.reveal.revealed .clickhint{display:none!important;animation:none!important}
+.reveal.revealed{border-color:rgba(100,220,148,.35)}
+.note{font-size:15px}
+.kicker{font-size:14px}
+.subtitle{max-width:1120px}
+@media(max-width:1100px){.framework{grid-template-columns:1fr}}
+.compact .framework{gap:12px}
+.compact .step{min-height:142px;padding:15px}
+.compact .card .small,.compact .step .small,.compact .node .small,.compact .ghost .small{font-size:13.5px}
+.ultra .step{min-height:112px;padding:10px}
+.ultra .card .small,.ultra .step .small,.ultra .node .small,.ultra .ghost .small{font-size:12px}
+
+
+/* --- v7 readability refinement --- */
+.node .small,
+.step .small,
+.quiz-option,
+.card li,
+.ghost .small{
+  font-size:clamp(16px,1.22vw,20px);
+  line-height:1.6;
+}
+.node{
+  min-height:160px;
+  padding:22px;
+}
+.node b{
+  font-size:clamp(22px,2vw,30px);
+  line-height:1.18;
+}
+.step{
+  min-height:188px;
+  padding:24px;
+}
+.step .big{
+  font-size:clamp(24px,2.2vw,32px);
+}
+.step .small{
+  max-width:95%;
+}
+.quiz-option{
+  padding:15px 18px;
+  margin-top:8px;
+}
+.slide.active[data-level="FRAMEWORK"] .card{
+  padding:22px;
+}
+.ghost{
+  min-height:205px;
+  padding:22px;
+}
+.ghost .hidden{
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid rgba(255,255,255,.14);
+}
+.reveal.revealed .clickhint{display:none!important;animation:none!important}
+.reveal.revealed .hidden{animation:fadeUp .25s ease-out both}
+@media(max-width:1100px){
+  .node,.step,.ghost{min-height:auto}
+}
+.compact .node .small,
+.compact .step .small,
+.compact .quiz-option,
+.compact .card li,
+.compact .ghost .small{
+  font-size:14px;
+}
+.ultra .node .small,
+.ultra .step .small,
+.ultra .quiz-option,
+.ultra .card li,
+.ultra .ghost .small{
+  font-size:12.5px;
+}
+
+
+/* --- v8 generated prompt readability --- */
+.code{
+  white-space:pre-wrap;
+  tab-size:2;
+}
+.card .code{
+  line-height:1.55;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700;800;900&display=swap');
+/* --- v9 bilingual Thai / English refinement --- */
+body, .textarea, .btn, .navbtn, .code{
+  font-family:'IBM Plex Sans Thai', Arial, Helvetica, sans-serif;
+}
+body.lang-th .title{
+  letter-spacing:-.01em;
+  line-height:1.12;
+}
+body.lang-th .subtitle,
+body.lang-th .med,
+body.lang-th .small,
+body.lang-th li,
+body.lang-th .note{
+  line-height:1.62;
+}
+.lang-toggle{
+  background:rgba(255,216,77,.16)!important;
+  border-color:rgba(255,216,77,.35)!important;
+  color:#ffe58f!important;
+}
+.node .small,
+.step .small,
+.quiz-option,
+.card li,
+.ghost .small{
+  font-size:clamp(16px,1.22vw,20px);
+  line-height:1.6;
+}
+.node{min-height:160px;padding:22px}
+.node b{font-size:clamp(22px,2vw,30px);line-height:1.18}
+.step{min-height:188px;padding:24px}
+.step .big{font-size:clamp(24px,2.2vw,32px)}
+.quiz-option{padding:15px 18px;margin-top:8px}
+.ghost{min-height:205px;padding:22px}
+.ghost .hidden{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.14)}
+.reveal.revealed .clickhint{display:none!important;animation:none!important}
+.reveal.revealed .hidden{animation:fadeUp .25s ease-out both}
+@media(max-width:1100px){.node,.step,.ghost{min-height:auto}}
+.compact .node .small,.compact .step .small,.compact .quiz-option,.compact .card li,.compact .ghost .small{font-size:14px}
+.ultra .node .small,.ultra .step .small,.ultra .quiz-option,.ultra .card li,.ultra .ghost .small{font-size:12.5px}
+
+
+/* --- v11 stronger IBM Plex Sans Thai font override --- */
+html, body, body *, 
+textarea, button, input, select,
+.card, .title, .subtitle, .kicker, .badge, .btn, .navbtn, .code {
+  font-family: 'IBM Plex Sans Thai', 'IBM Plex Sans Thai Looped', 'Sarabun', 'Tahoma', 'Arial', sans-serif !important;
+}
+.title, .big, .brand, .btn, .navbtn, .badge {
+  font-weight: 800;
+}
+.code {
+  font-family: 'IBM Plex Sans Thai', 'IBM Plex Sans Thai Looped', 'Sarabun', 'Tahoma', 'Arial', sans-serif !important;
+}
+
+
+/* --- v12 mobile landscape fit --- */
+.orientation-hint{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(3,10,20,.94);
+  color:#fff;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:28px;
+  font-family:'IBM Plex Sans Thai','Sarabun','Tahoma',Arial,sans-serif;
+}
+.orientation-hint .box{
+  max-width:420px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:24px;
+  padding:24px;
+  background:rgba(255,255,255,.06);
+  box-shadow:0 16px 36px rgba(0,0,0,.35);
+}
+.orientation-hint .icon{font-size:46px;margin-bottom:10px}
+.orientation-hint .main{font-size:22px;font-weight:800;margin-bottom:8px}
+.orientation-hint .sub{font-size:15px;line-height:1.55;color:#bfd1ea}
+
+@media (max-width: 820px) and (orientation: portrait){
+  .orientation-hint{display:flex}
+}
+
+/* Phones in landscape: keep the desktop logic, but reduce chrome and scale content. */
+@media (max-height: 520px) and (orientation: landscape){
+  html,body{overflow:hidden}
+  .topbar{
+    padding:5px 8px;
+    gap:6px;
+    min-height:38px;
+  }
+  .brand{
+    font-size:14px;
+    gap:6px;
+    max-width:32vw;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .pac{
+    width:18px;
+    height:18px;
+    min-width:18px;
+  }
+  .badge{
+    padding:4px 7px;
+    font-size:10px;
+  }
+  .topbar .badge:nth-of-type(2),
+  .topbar .badge:nth-of-type(3){
+    display:none;
+  }
+  .progress-wrap{
+    min-width:180px;
+    gap:6px;
+    flex:1;
+  }
+  .level-pill{
+    padding:4px 7px;
+    font-size:10px;
+  }
+  .progress{
+    height:8px;
+  }
+
+  .footer{
+    padding:5px 8px;
+    min-height:42px;
+    gap:6px;
+  }
+  .navgroup{
+    gap:5px;
+  }
+  .navbtn{
+    padding:7px 9px;
+    font-size:11px;
+  }
+  .counter{
+    font-size:12px;
+    min-width:42px;
+    text-align:center;
+  }
+  .footer .navgroup:first-child .navbtn:nth-child(3){
+    display:none;
+  }
+  .footer .navgroup:last-child .navbtn:nth-child(2){
+    display:none;
+  }
+
+  .slide{
+    padding:4px 8px;
+  }
+  .screen{
+    max-width:100vw;
+    gap:7px;
+  }
+  .kicker{
+    padding:4px 8px;
+    font-size:10px;
+  }
+  .dot{
+    width:7px;
+    height:7px;
+  }
+  .title{
+    font-size:clamp(20px,5vw,34px);
+    line-height:1.04;
+  }
+  body.lang-th .title{
+    line-height:1.08;
+  }
+  .subtitle{
+    font-size:clamp(11px,2.1vw,15px);
+    line-height:1.38;
+    max-width:94vw;
+  }
+  .card{
+    border-radius:14px;
+    padding:10px;
+  }
+  .big,
+  .card .big,
+  .step .big,
+  .ghost .big,
+  .node b{
+    font-size:clamp(14px,2.6vw,20px);
+    line-height:1.18;
+  }
+  .med,
+  .card .med{
+    font-size:clamp(11px,1.9vw,14px);
+    line-height:1.38;
+  }
+  .small,
+  .card .small,
+  .step .small,
+  .node .small,
+  .ghost .small{
+    font-size:clamp(10px,1.7vw,12.5px);
+    line-height:1.35;
+  }
+  ul,ol{
+    margin-top:4px;
+    margin-left:14px;
+    line-height:1.35;
+  }
+  .card li{
+    font-size:clamp(10px,1.7vw,12.5px);
+    line-height:1.35;
+  }
+  .note{
+    padding:7px 9px;
+    border-radius:12px;
+    font-size:11px;
+    line-height:1.35;
+  }
+
+  .grid{
+    gap:8px;
+  }
+  .three{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  }
+  .two{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+  .four{
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  }
+  .map{
+    grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+    gap:7px;
+  }
+  .node{
+    min-height:94px;
+    padding:10px;
+    border-radius:14px;
+  }
+  .lvl{
+    font-size:8.5px;
+    padding:3px 5px;
+  }
+  .framework{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:8px;
+  }
+  .step{
+    min-height:96px;
+    padding:10px;
+    border-radius:14px;
+  }
+  .step .num{
+    width:26px;
+    height:26px;
+    font-size:12px;
+    margin-bottom:5px;
+  }
+  .split{
+    grid-template-columns:1fr 1fr !important;
+    gap:8px;
+  }
+
+  .workspace{
+    gap:5px;
+  }
+  .wrow{
+    grid-template-columns:82px 1fr !important;
+    gap:6px;
+  }
+  .wrow label{
+    font-size:11px;
+    padding-top:6px;
+  }
+  .textarea{
+    min-height:42px;
+    border-radius:10px;
+    padding:6px 8px;
+    font-size:11px;
+    line-height:1.28;
+  }
+  .status{
+    font-size:10px;
+    margin-top:1px;
+  }
+  .btns{
+    gap:5px;
+  }
+  .btn{
+    padding:7px 9px;
+    font-size:11px;
+  }
+  .code{
+    max-height:120px;
+    border-radius:12px;
+    padding:8px;
+    font-size:10px;
+    line-height:1.32;
+  }
+  .quiz-option{
+    padding:7px 9px;
+    margin-top:5px;
+    font-size:11px;
+    border-radius:10px;
+  }
+  .ghost-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:8px;
+  }
+  .ghost{
+    min-height:110px;
+    padding:10px;
+    border-radius:14px;
+  }
+  .ghost .face{
+    font-size:22px;
+    margin-bottom:4px;
+  }
+  .clickhint{
+    font-size:9px;
+    padding:3px 6px;
+  }
+  .hidden{
+    margin-top:5px;
+  }
+}
+
+/* Small tablets / large phones in landscape */
+@media (min-height: 521px) and (max-width: 950px) and (orientation: landscape){
+  .topbar{padding:7px 12px}
+  .footer{padding:7px 12px}
+  .slide{padding:8px 12px}
+  .screen{gap:9px}
+  .title{font-size:clamp(26px,4.5vw,44px)}
+  .subtitle{font-size:clamp(13px,1.8vw,18px)}
+  .three{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
+  .two{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .map{grid-template-columns:repeat(5,minmax(0,1fr)) !important}
+  .framework{grid-template-columns:repeat(3,minmax(0,1fr)) !important}
+  .split{grid-template-columns:1fr 1fr !important}
+}
+
+
+/* --- v14 responsive fit while keeping desktop-style navigation --- */
+@supports (height: 100dvh){
+  html, body, .deck{
+    height:100dvh;
+    min-height:100dvh;
+  }
+}
+
+/* Mobile and tablet landscape: same footer/navigation design, only compacted */
+@media (max-width: 1180px) and (orientation: landscape){
+  html,body{
+    overflow:hidden;
+  }
+  .deck{
+    grid-template-rows:auto 1fr auto;
+    height:100dvh;
+    min-height:100dvh;
+  }
+  .topbar{
+    padding:7px 12px;
+    gap:8px;
+  }
+  .brand{
+    font-size:16px;
+    gap:7px;
+    max-width:34vw;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .pac{
+    width:20px;
+    height:20px;
+    min-width:20px;
+  }
+  .badge{
+    padding:5px 8px;
+    font-size:11px;
+  }
+  .topbar .badge:nth-of-type(2),
+  .topbar .badge:nth-of-type(3){
+    display:none;
+  }
+  .progress-wrap{
+    min-width:220px;
+    gap:7px;
+  }
+  .level-pill{
+    padding:5px 8px;
+    font-size:11px;
+  }
+  .progress{
+    height:9px;
+  }
+
+  .footer{
+    display:flex!important;
+    padding:7px 10px;
+    gap:8px;
+    min-height:48px;
+  }
+  .navgroup{
+    gap:6px;
+  }
+  .navbtn{
+    padding:8px 10px;
+    font-size:12px;
+  }
+  .counter{
+    font-size:12px;
+    min-width:52px;
+    text-align:center;
+  }
+
+  .slide{
+    padding:6px 10px;
+  }
+  .screen{
+    max-width:100vw;
+    gap:8px;
+  }
+  .kicker{
+    padding:5px 9px;
+    font-size:11px;
+  }
+  .dot{
+    width:7px;
+    height:7px;
+  }
+  .title{
+    font-size:clamp(22px,4.2vw,40px);
+    line-height:1.04;
+  }
+  body.lang-th .title{
+    line-height:1.08;
+  }
+  .subtitle{
+    font-size:clamp(12px,1.9vw,17px);
+    line-height:1.4;
+    max-width:94vw;
+  }
+  .card{
+    border-radius:16px;
+    padding:12px;
+  }
+  .big,
+  .card .big,
+  .step .big,
+  .ghost .big,
+  .node b{
+    font-size:clamp(15px,2.3vw,22px);
+    line-height:1.18;
+  }
+  .med,
+  .card .med{
+    font-size:clamp(12px,1.7vw,15px);
+    line-height:1.42;
+  }
+  .small,
+  .card .small,
+  .step .small,
+  .node .small,
+  .ghost .small{
+    font-size:clamp(10.5px,1.45vw,13px);
+    line-height:1.4;
+  }
+  ul,ol{
+    margin-top:4px;
+    margin-left:15px;
+    line-height:1.4;
+  }
+  .card li{
+    font-size:clamp(10.5px,1.45vw,13px);
+    line-height:1.4;
+  }
+  .note{
+    padding:8px 10px;
+    border-radius:12px;
+    font-size:12px;
+    line-height:1.42;
+  }
+  .grid{
+    gap:9px;
+  }
+  .three{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  }
+  .two{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  .four{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  }
+  .map{
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    gap:8px;
+  }
+  .node{
+    min-height:105px;
+    padding:11px;
+    border-radius:14px;
+  }
+  .lvl{
+    font-size:9px;
+    padding:3px 6px;
+  }
+  .framework{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:8px;
+  }
+  .step{
+    min-height:108px;
+    padding:11px;
+    border-radius:14px;
+  }
+  .step .num{
+    width:27px;
+    height:27px;
+    font-size:12px;
+    margin-bottom:6px;
+  }
+  .split{
+    grid-template-columns:1fr 1fr!important;
+    gap:9px;
+  }
+  .workspace{
+    gap:6px;
+  }
+  .wrow{
+    grid-template-columns:86px 1fr!important;
+    gap:6px;
+  }
+  .wrow label{
+    font-size:11px;
+    padding-top:6px;
+  }
+  .textarea{
+    min-height:44px;
+    border-radius:10px;
+    padding:7px 8px;
+    font-size:11px;
+    line-height:1.32;
+  }
+  .status{
+    font-size:10.5px;
+    margin-top:1px;
+  }
+  .btns{
+    gap:6px;
+  }
+  .btn{
+    padding:8px 10px;
+    font-size:11.5px;
+  }
+  .code{
+    max-height:132px;
+    border-radius:12px;
+    padding:8px;
+    font-size:10.5px;
+    line-height:1.34;
+  }
+  .quiz-option{
+    padding:8px 10px;
+    margin-top:5px;
+    font-size:12px;
+    border-radius:11px;
+  }
+  .ghost-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:9px;
+  }
+  .ghost{
+    min-height:122px;
+    padding:12px;
+    border-radius:15px;
+  }
+  .ghost .face{
+    font-size:24px;
+    margin-bottom:4px;
+  }
+  .clickhint{
+    font-size:9.5px;
+    padding:3px 6px;
+  }
+}
+
+/* Very short phone landscape: hide only non-essential buttons, not the footer style */
+@media (max-height: 430px) and (orientation: landscape){
+  .topbar{
+    padding:5px 8px;
+  }
+  .footer{
+    padding:5px 8px;
+    min-height:42px;
+  }
+  .footer .navgroup:first-child .navbtn:nth-child(3){
+    display:none;
+  }
+  .footer .navgroup:last-child .navbtn:nth-child(2){
+    display:none;
+  }
+  .navbtn{
+    padding:7px 9px;
+    font-size:11px;
+  }
+  .counter{
+    font-size:11px;
+  }
+  .slide{
+    padding:4px 8px;
+  }
+  .screen{
+    gap:6px;
+  }
+  .title{
+    font-size:clamp(20px,4.6vw,34px);
+  }
+  .subtitle{
+    font-size:clamp(11px,1.8vw,14px);
+  }
+  .card{
+    padding:9px;
+  }
+  .code{
+    max-height:105px;
+    font-size:10px;
+  }
+  .textarea{
+    min-height:38px;
+    font-size:10.5px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="orientation-hint" id="orientationHint">
+  <div class="box">
+    <div class="icon">↔️</div>
+    <div class="main" data-en="For the best mobile view, rotate your phone" data-th="เพื่อการแสดงผลบนมือถือที่ดีที่สุด กรุณาหมุนโทรศัพท์เป็นแนวนอน">For the best mobile view, rotate your phone</div>
+    <div class="sub" data-en="This interactive deck is optimized for landscape mode on mobile." data-th="สไลด์แบบ interactive นี้ถูกปรับให้เหมาะกับการดูแนวนอนบนมือถือ">This interactive deck is optimized for landscape mode on mobile.</div>
+  </div>
+</div>
+
+<div class="deck">
+<div class="topbar">
+<div class="brand"><span class="pac"></span> AI for HR — Navigate the Maze</div>
+<div class="badge">3 hands-on missions</div>
+<div class="badge">Survey data included</div><div class="badge">Subtle animations</div>
+<div class="progress-wrap"><div class="level-pill" id="levelPill">INTRO</div><div class="progress"><div id="bar"></div></div><div class="badge" id="barText">0%</div></div>
+</div>
+<main id="slides">
+<section class="slide active" data-level="INTRO"><div class="screen center">
+<div class="kicker"><span class="dot"></span> AI FOR HR WORKSHOP</div>
+<h1 class="title">Navigate the Maze</h1>
+<p class="subtitle">Start simple, end professional: participants will build prompts they can export as .txt files and test in their <span class="nowrap">AI tool</span>.</p>
+<div class="grid three" style="width:100%">
+<div class="card cyan"><div class="big">Beginner-friendly AI</div><p class="med">No technical setup. Type in the deck, build the prompt, export the text.</p></div>
+<div class="card yellow"><div class="big">Professional HR logic</div><p class="med">Evidence, criteria, dashboard thinking, and human review are built into the missions.</p></div>
+<div class="card pink"><div class="big">Final destination</div><p class="med">Career / IDP gap analysis with development dashboard indicators.</p></div>
+</div>
+<div class="btns"><button class="btn" onclick="go(1)">Enter the maze</button></div>
+</div></section>
+<section class="slide" data-level="SURVEY"><div class="screen">
+<div class="kicker"><span class="dot"></span> SURVEY INSIGHT</div>
+<h2 class="title">Why this workshop is designed this way</h2>
+<p class="subtitle">The pre-workshop survey shows a practical audience: many are still building confidence with AI, while the topics they want to explore are strategic HR topics.</p>
+<div class="grid three">
+<div class="card cyan"><div class="big">AI readiness</div><ul><li>Mostly early-stage users</li><li>Some participants already experiment with AI</li><li>Content should stay practical and guided</li></ul></div>
+<div class="card yellow"><div class="big">Current AI use</div><ul><li>Email and internal communication</li><li>Reports and summaries</li><li>Recruitment support</li><li>Training materials</li></ul></div>
+<div class="card pink"><div class="big">High-interest areas</div><ul><li>HR Dashboard / Analytics</li><li>Performance and Promotion</li><li>Workforce Planning</li><li>Career Path and IDP</li><li>Training and Development</li></ul></div>
+</div>
+<div class="note">Workshop design note: start with simple tasks, then move toward survey insight, dashboard thinking, and Career / IDP support.</div>
+</div></section>
+<section class="slide" data-level="MATURITY"><div class="screen">
+<div class="kicker"><span class="dot"></span> HR AI MATURITY</div>
+<h2 class="title">From writing assistant to HR thinking support</h2>
+<div class="grid five maturity-grid">
+<div class="card cyan"><div class="big">1. Drafting</div><p class="small">AI creates a first draft.</p><p class="small"><b>Example:</b> HR email</p></div>
+<div class="card"><div class="big">2. Structuring</div><p class="small">AI organizes information.</p><p class="small"><b>Example:</b> report summary</p></div>
+<div class="card yellow"><div class="big">3. Analysis</div><p class="small">AI identifies patterns and risks.</p><p class="small"><b>Example:</b> survey insight</p></div>
+<div class="card green"><div class="big">4. Decision-prep</div><p class="small">AI supports people discussions.</p><p class="small"><b>Example:</b> IDP / performance discussion</p></div>
+<div class="card pink"><div class="big">5. Workflow Assistant</div><p class="small">AI follows a repeatable process.</p><p class="small"><b>Example:</b> HR report agent</p></div>
+</div>
+<div class="note">Today we practice Levels 1–4. Level 5 is possible, but it requires more customization, testing, and governance.</div>
+</div></section>
+<section class="slide" data-level="MAP"><div class="screen">
+<div class="kicker"><span class="dot"></span> JOURNEY MAP</div>
+<h2 class="title">Today’s route</h2>
+<div class="map">
+<div class="node" onclick="go(4)"><span class="lvl">DEMO</span><b>Final Boss Preview</b><div class="small">Show IDP + Dashboard before teaching the framework.</div></div>
+<div class="node" onclick="go(8)"><span class="lvl">FRAMEWORK</span><b>Prompt Path</b><div class="small">Goal, Context, Data, Criteria, Output, Guardrail.</div></div>
+<div class="node" onclick="go(11)"><span class="lvl">SAFETY</span><b>Human Review</b><div class="small">AI prepares; HR decides.</div></div>
+<div class="node" onclick="go(13)"><span class="lvl">HANDS-ON</span><b>3 Missions</b><div class="small">Communication, Survey → Dashboard, Career / IDP.</div></div>
+<div class="node" onclick="go(25)"><span class="lvl">EXPORT</span><b>Boss Battle</b><div class="small">Fix weak outputs and export all work.</div></div>
+</div>
+<div class="note">Hands-on missions require participants to type. Build / Copy / Export will not work until required fields are completed.</div>
+</div></section>
+<section class="slide" data-level="FINAL BOSS"><div class="screen">
+<div class="kicker"><span class="dot"></span> FINAL DESTINATION PREVIEW</div>
+<h2 class="title">By the end, you can build this</h2>
+<p class="subtitle">A prompt that helps HR compare a target role with current employee evidence, identify gaps, create an IDP, and suggest dashboard indicators.</p>
+<div class="grid three">
+<div class="card cyan"><div class="big">1. Gap Analysis</div><p class="med">Target role requirement vs current profile evidence.</p></div>
+<div class="card green"><div class="big">2. 6-Month IDP</div><p class="med">Development actions, learning methods, support, and success measures.</p></div>
+<div class="card yellow"><div class="big">3. Development Dashboard</div><p class="med">Indicators that track whether development is actually happening.</p></div>
+</div>
+</div></section>
+<section class="slide" data-level="FINAL BOSS"><div class="screen">
+<h2 class="title">Bad prompt first</h2>
+<div class="split">
+<div class="card pink"><div class="big">Weak prompt</div><div class="code">Create an IDP for an employee who wants to become an HRBP.</div></div>
+<div class="card reveal"><div class="big">What is missing?</div><p class="med">Click to reveal what HR cannot trust yet.</p><span class="clickhint">👆 Click to reveal</span><div class="hidden"><ul><li>No target role requirement</li><li>No current employee evidence</li><li>No criteria for comparison</li><li>No development priority</li><li>No success measure</li><li>No dashboard indicators</li><li>No human decision boundary</li></ul></div></div>
+</div>
+</div></section>
+<section class="slide" data-level="FINAL BOSS"><div class="screen">
+<h2 class="title">Better output preview</h2>
+<div class="grid three">
+<div class="card cyan"><div class="big">Gap Analysis</div><p class="small">Business acumen, HR data insight, advisory skill, stakeholder influence, proactive behavior.</p></div>
+<div class="card green"><div class="big">6-Month IDP</div><p class="small">Shadowing, guided analytics practice, workforce planning exposure, role play, mini insight project.</p></div>
+<div class="card yellow"><div class="big">Dashboard Indicators</div><p class="small">Business exposure hours, people insight outputs, advisory practice, manager feedback, IDP milestones.</p></div>
+</div>
+<div class="note">Note: The better output is not better because the prompt is longer. It is better because it has evidence, criteria, output format, and guardrails.</div>
+</div></section>
+<section class="slide" data-level="FINAL BOSS"><div class="screen">
+<h2 class="title">What made the better prompt better?</h2>
+<div class="framework">
+<div class="step"><div class="num">1</div><div class="big">Goal</div><p class="small">Analyze readiness and create an IDP.</p></div>
+<div class="step"><div class="num">2</div><div class="big">Context</div><p class="small">Support HR, manager, and employee discussion.</p></div>
+<div class="step"><div class="num">3</div><div class="big">Data</div><p class="small">Target role + current employee profile.</p></div>
+<div class="step"><div class="num">4</div><div class="big">Criteria</div><p class="small">Performance, skill, experience, behavior, exposure.</p></div>
+<div class="step"><div class="num">5</div><div class="big">Output</div><p class="small">Gap, priorities, IDP, dashboard indicators.</p></div>
+<div class="step"><div class="num">6</div><div class="big">Guardrail</div><p class="small">AI supports; HR decides.</p></div>
+</div>
+</div></section>
+<section class="slide" data-level="FRAMEWORK"><div class="screen">
+<div class="kicker"><span class="dot"></span> HR PROMPT PATH</div>
+<h2 class="title">A simple structure for stronger HR prompts</h2>
+<div class="framework">
+<div class="step"><div class="num">1</div><div class="big">Goal</div><p class="small">What do you want AI to help you do?</p></div>
+<div class="step"><div class="num">2</div><div class="big">Context</div><p class="small">Who is this for and why does it matter?</p></div>
+<div class="step"><div class="num">3</div><div class="big">Data</div><p class="small">What information should AI use?</p></div>
+<div class="step"><div class="num">4</div><div class="big">Criteria</div><p class="small">How should AI analyze or compare?</p></div>
+<div class="step"><div class="num">5</div><div class="big">Output</div><p class="small">What format should the answer take?</p></div>
+<div class="step"><div class="num">6</div><div class="big">Guardrail</div><p class="small">What must AI not do?</p></div>
+</div>
+</div></section>
+<section class="slide" data-level="FRAMEWORK"><div class="screen">
+<h2 class="title">Why criteria matters most</h2>
+<div class="grid two">
+<div class="card pink"><div class="big">Without criteria</div><p class="med">AI often gives generic recommendations that sound good but do not match the HR problem.</p></div>
+<div class="card green"><div class="big">With criteria</div><p class="med">AI can compare, prioritize, and explain why an HR action or risk area matters.</p></div>
+</div>
+<div class="note">Examples of HR criteria: performance evidence, competency framework, role requirement, business impact, urgency, fairness, risk level, data quality.</div>
+</div></section>
+<section class="slide" data-level="FRAMEWORK"><div class="screen">
+<h2 class="title">Quick check</h2>
+<p class="subtitle">Choose the right prompt path box.</p>
+<div class="grid two">
+<div class="card"><div class="small">“Compare against HRBP role requirements.”</div><div class="quiz-option" onclick="markQuiz(this,false)">Context</div><div class="quiz-option" onclick="markQuiz(this,true)">Criteria</div></div>
+<div class="card"><div class="small">“Present the result as a gap analysis table.”</div><div class="quiz-option" onclick="markQuiz(this,true)">Output</div><div class="quiz-option" onclick="markQuiz(this,false)">Data</div></div>
+<div class="card"><div class="small">“Use manager feedback and recent performance evidence.”</div><div class="quiz-option" onclick="markQuiz(this,true)">Data</div><div class="quiz-option" onclick="markQuiz(this,false)">Role</div></div>
+<div class="card"><div class="small">“Do not decide whether the employee should be promoted.”</div><div class="quiz-option" onclick="markQuiz(this,true)">Guardrail</div><div class="quiz-option" onclick="markQuiz(this,false)">Goal</div></div>
+</div>
+</div></section>
+<section class="slide" data-level="SAFETY"><div class="screen">
+<div class="kicker"><span class="dot"></span> RESPONSIBLE AI FOR HR</div>
+<h2 class="title">AI can prepare. HR decides.</h2>
+<div class="grid two">
+<div class="card green"><div class="big">Good use</div><ul><li>Organize evidence</li><li>Compare against criteria</li><li>Suggest questions</li><li>Highlight missing data</li><li>Prepare discussion options</li></ul></div>
+<div class="card pink"><div class="big">Risky use</div><ul><li>Decide promotion</li><li>Assign rating</li><li>Select final candidate</li><li>Invent missing facts</li><li>Use identifiable personal data carelessly</li></ul></div>
+</div>
+</div></section>
+<section class="slide" data-level="SAFETY"><div class="screen">
+<h2 class="title">Risky vs better prompts</h2>
+<p class="subtitle">Click each card to inspect the risk and better version.</p>
+<div class="grid three">
+<div class="card reveal"><div class="big">Promotion</div><p class="med">“Should this employee be promoted?”</p><span class="clickhint">👆 Click to improve</span><div class="hidden small"><b>Better:</b> Create a readiness checklist based on performance evidence, target role expectations, business need, and missing evidence. Do not decide the outcome.</div></div>
+<div class="card reveal"><div class="big">Performance</div><p class="med">“Rate this employee’s performance.”</p><span class="clickhint">👆 Click to improve</span><div class="hidden small"><b>Better:</b> Organize evidence into strengths, development areas, unclear evidence, and manager clarification questions. Do not assign a rating.</div></div>
+<div class="card reveal"><div class="big">Dashboard</div><p class="med">“Create an HR dashboard.”</p><span class="clickhint">👆 Click to improve</span><div class="hidden small"><b>Better:</b> Suggest indicators for a specific HR issue. Explain measure, why it matters, data source, interpretation, and action.</div></div>
+</div>
+</div></section>
+<section class="slide" data-level="MISSION 1"><div class="screen">
+<div class="kicker"><span class="dot"></span> HANDS-ON MISSION 1</div>
+<h2 class="title">HR Communication</h2>
+<div class="split">
+<div class="card">
+<div class="big">Scenario</div>
+<p class="med">HR needs to invite people managers to a Performance Feedback Calibration Session. The goal is to improve consistency, fairness, and clarity in performance feedback.</p>
+<div class="note" style="margin-top:12px">You must type your own entries. Build / Copy / Export only unlock after required fields are completed.</div>
+</div>
+<div class="card yellow">
+<div class="big">What to include</div>
+<ul><li>Audience: people managers</li><li>Purpose: consistency and fairness in feedback</li><li>Data: date, time, location/link, preparation</li><li>Output: subject line, email body, CTA</li></ul>
+</div>
+</div>
+</div></section>
+<section class="slide" data-level="MISSION 1"><div class="screen">
+<h2 class="title">Mission 1 workspace</h2>
+<div class="split">
+<div class="card">
+<div class="workspace">
+<div class="wrow"><label>Goal*</label><textarea class="textarea save m1req" data-key="m1_goal" placeholder="Example: Draft an internal email inviting managers to a calibration session."></textarea></div>
+<div class="wrow"><label>Context*</label><textarea class="textarea save m1req" data-key="m1_context" placeholder="Who is this for? Why does the session matter?"></textarea></div>
+<div class="wrow"><label>Data*</label><textarea class="textarea save m1req" data-key="m1_data" placeholder="Date, time, venue/link, preparation, call to action."></textarea></div>
+<div class="wrow"><label>Output*</label><textarea class="textarea save m1req" data-key="m1_output" placeholder="Subject line, short email body, and CTA."></textarea></div>
+<div class="wrow"><label>Guardrail</label><textarea class="textarea save" data-key="m1_guardrail" placeholder="Example: Keep the tone supportive, not compliance-heavy."></textarea></div>
+</div>
+<div class="status" id="m1_status">Required fields completed: 0 / 4</div>
+<div class="btns"><button class="btn green" onclick="buildPrompt('m1',['goal','context','data','output'], false)">Build Prompt</button><button class="btn secondary" onclick="copyPrompt('m1')">Copy</button><button class="btn cyan" onclick="downloadMission('m1','Mission 1 — HR Communication')">Export .txt</button></div>
+</div>
+<div class="card"><div class="big">Generated prompt</div><div class="code" id="m1_result">Complete the required fields, then click Build Prompt.</div></div>
+</div>
+</div></section>
+<section class="slide" data-level="MISSION 2"><div class="screen">
+<div class="kicker"><span class="dot"></span> HANDS-ON MISSION 2</div>
+<h2 class="title">Survey Insight → Dashboard</h2>
+<p class="subtitle">We will use the mock employee satisfaction survey file as the source for a prepared data snapshot.</p>
+<div class="grid two">
+<div class="card cyan"><div class="big">Dataset categories</div><ul><li>Job Satisfaction</li><li>Relationship with Management</li><li>Engagement</li><li>Work Environment</li><li>Overall Satisfaction</li></ul></div>
+<div class="card yellow"><div class="big">Rating scale</div><ul><li>Strongly Disagree = 1</li><li>Disagree = 2</li><li>Neutral = 3</li><li>Agree = 4</li><li>Strongly Agree = 5</li></ul></div>
+</div>
+</div></section>
+<section class="slide" data-level="MISSION 2"><div class="screen">
+<h2 class="title">Prepared survey snapshot</h2>
+<div class="grid two">
+<div class="card"><div class="big">Category averages</div><div class="code">Job Satisfaction: 3.60
+Relationship with Management: 3.54
+Engagement: 3.28
+Work Environment: 3.62
+Overall Satisfaction: 3.69</div></div>
+<div class="card"><div class="big">Notable signals</div><div class="code">Lowest items:
+- Engagement in the work I do: 2.54
+- Strong connection to work and organization: 2.85
+- Supervisor treats me with respect: 2.92
+- Trust in management: 3.31
+
+Stronger items:
+- Professional growth opportunities: 4.23
+- Constructive feedback from supervisor: 4.23
+- Positive work culture: 3.85
+- Intent to stay one year: 3.85</div></div>
+</div>
+<div class="note">Names exist in the mock file, but the analysis should be category-level. Do not identify individuals in the final insight.</div>
+</div></section>
+<section class="slide" data-level="DASHBOARD"><div class="screen">
+<div class="kicker"><span class="dot"></span> DASHBOARD THINKING</div>
+<h2 class="title">A dashboard starts with a decision, not a chart</h2>
+<div class="grid two">
+<div class="card yellow"><div class="big">Ask before creating indicators</div><ol><li>What decision needs support?</li><li>Who will use the dashboard?</li><li>What risk or opportunity are we monitoring?</li><li>What data source is available?</li><li>What HR action should follow?</li></ol></div>
+<div class="card green"><div class="big">Examples</div><ul><li><b>Low engagement</b> → Engagement Index → investigate root causes</li><li><b>Low management trust</b> → Management Trust Score → manager enablement</li><li><b>Low training relevance</b> → Training Relevance Score → redesign TNA</li><li><b>Low IDP progress</b> → IDP Milestone Completion → manager follow-up</li></ul></div>
+</div>
+<div class="note">Mission 2 asks participants to turn survey data into HR insight and dashboard indicators, not just summarize responses.</div>
+</div></section>
+<section class="slide" data-level="MISSION 2"><div class="screen">
+<h2 class="title">Mission 2 workspace</h2>
+<div class="split">
+<div class="card">
+<div class="workspace">
+<div class="wrow"><label>Goal*</label><textarea class="textarea save m2req" data-key="m2_goal" placeholder="Analyze employee satisfaction survey results and identify key HR insights."></textarea></div>
+<div class="wrow"><label>Context*</label><textarea class="textarea save m2req" data-key="m2_context" placeholder="Who will use the insight? What decision or discussion should it support?"></textarea></div>
+<div class="wrow"><label>Data*</label><textarea class="textarea save m2req" data-key="m2_data" placeholder="Paste or insert survey snapshot."></textarea></div>
+<div class="wrow"><label>Criteria*</label><textarea class="textarea save m2req" data-key="m2_criteria" placeholder="Theme, evidence, possible root cause, impact, HR action, data to validate."></textarea></div>
+<div class="wrow"><label>Output*</label><textarea class="textarea save m2req" data-key="m2_output" placeholder="Insight table, recommended actions, and dashboard indicators."></textarea></div>
+<div class="wrow"><label>Guardrail*</label><textarea class="textarea save m2req" data-key="m2_guardrail" placeholder="Do not overgeneralize. Do not identify individuals. Mark conclusions that need validation."></textarea></div>
+</div>
+<div class="status" id="m2_status">Required fields completed: 0 / 6</div>
+<div class="btns"><button class="btn secondary" onclick="insertSurveySnapshot()">Insert sample survey snapshot</button><button class="btn green" onclick="buildPrompt('m2',['goal','context','data','criteria','output','guardrail'], true)">Build Prompt</button><button class="btn secondary" onclick="copyPrompt('m2')">Copy</button><button class="btn cyan" onclick="downloadMission('m2','Mission 2 — Survey Insight Dashboard')">Export .txt</button></div>
+</div>
+<div class="card"><div class="big">Generated prompt</div><div class="code" id="m2_result">Complete the required fields, then click Build Prompt.</div></div>
+</div>
+</div></section>
+<section class="slide" data-level="MISSION 2"><div class="screen">
+<h2 class="title">Dashboard follow-up prompt</h2>
+<div class="split">
+<div class="card"><div class="code" id="m2_follow">Based on the survey analysis above, suggest 5 HR dashboard indicators. For each indicator, explain:
+1. what it measures
+2. why it matters
+3. data source needed
+4. how to interpret high / low results
+5. possible HR action
+
+Guardrail: If the data source is unclear, mark it as “data required.”</div><div class="btns"><button class="btn secondary" onclick="copyText('m2_follow')">Copy follow-up prompt</button></div></div>
+<div class="card green"><div class="big">Examples of useful indicators</div><ul><li>Engagement Index</li><li>Management Trust Score</li><li>Career Growth Score</li><li>Feedback Quality Score</li><li>Work Environment Score</li></ul></div>
+</div>
+</div></section>
+<section class="slide" data-level="DEMO"><div class="screen">
+<div class="kicker"><span class="dot"></span> DEMO ONLY</div>
+<h2 class="title">Performance / Promotion Support</h2>
+<div class="grid two">
+<div class="card pink"><div class="big">Risky prompt</div><div class="code">Should this employee be promoted?</div></div>
+<div class="card green"><div class="big">Better prompt</div><div class="code">Create a promotion readiness discussion checklist using performance evidence, target role expectations, competency examples, business need, and missing evidence. Do not decide the promotion outcome.</div></div>
+</div>
+<div class="note">This remains a demo so the workshop does not become too rushed. Key point: AI organizes evidence and questions; it does not make the people decision.</div>
+</div></section>
+<section class="slide" data-level="MISSION 3"><div class="screen">
+<div class="kicker"><span class="dot"></span> HANDS-ON MISSION 3</div>
+<h2 class="title">Career / IDP Gap Analysis + Dashboard</h2>
+<div class="grid two">
+<div class="card cyan"><div class="big">Target role: HR Business Partner</div><ul><li>Understands business priorities</li><li>Advises managers on people issues</li><li>Uses HR data to identify risks</li><li>Influences stakeholders</li><li>Supports talent and succession discussions</li></ul></div>
+<div class="card yellow"><div class="big">Current profile: Senior HR Officer</div><ul><li>Strong HR operations delivery</li><li>Good onboarding and training coordination</li><li>Limited business planning exposure</li><li>Limited use of HR data for insight</li><li>Needs more confidence with senior managers</li></ul></div>
+</div>
+</div></section>
+<section class="slide" data-level="MISSION 3"><div class="screen">
+<h2 class="title">Mission 3 workspace</h2>
+<div class="split">
+<div class="card">
+<div class="workspace">
+<div class="wrow"><label>Goal*</label><textarea class="textarea save m3req" data-key="m3_goal" placeholder="Analyze readiness and build a 6-month IDP for an employee preparing for an HRBP role."></textarea></div>
+<div class="wrow"><label>Context*</label><textarea class="textarea save m3req" data-key="m3_context" placeholder="This will support a discussion among HR, the manager, and the employee."></textarea></div>
+<div class="wrow"><label>Data*</label><textarea class="textarea save m3req" data-key="m3_data" placeholder="Target role requirements and current employee profile."></textarea></div>
+<div class="wrow"><label>Criteria*</label><textarea class="textarea save m3req" data-key="m3_criteria" placeholder="Performance evidence, advisory skill, business exposure, data usage, stakeholder influence, proactive behavior."></textarea></div>
+<div class="wrow"><label>Output*</label><textarea class="textarea save m3req" data-key="m3_output" placeholder="Readiness Summary, Gap Analysis, Top 3 Priorities, 6-month IDP, and dashboard indicators."></textarea></div>
+<div class="wrow"><label>Guardrail*</label><textarea class="textarea save m3req" data-key="m3_guardrail" placeholder="Do not decide promotion readiness. Do not invent missing information. State what HR or manager should validate."></textarea></div>
+</div>
+<div class="status" id="m3_status">Required fields completed: 0 / 6</div>
+<div class="btns"><button class="btn secondary" onclick="insertIDPSample()">Insert sample case</button><button class="btn green" onclick="buildPrompt('m3',['goal','context','data','criteria','output','guardrail'], true)">Build Prompt</button><button class="btn secondary" onclick="copyPrompt('m3')">Copy</button><button class="btn cyan" onclick="downloadMission('m3','Mission 3 — Career IDP Dashboard')">Export .txt</button></div>
+</div>
+<div class="card"><div class="big">Generated prompt</div><div class="code" id="m3_result">Complete the required fields, then click Build Prompt.</div></div>
+</div>
+</div></section>
+<section class="slide" data-level="MISSION 3"><div class="screen">
+<h2 class="title">Development dashboard follow-up</h2>
+<div class="split">
+<div class="card"><div class="code" id="m3_follow">Based on the IDP above, suggest dashboard indicators to track whether development is happening and whether readiness is improving. Include:
+1. indicator
+2. what it tracks
+3. why it matters
+4. data source
+5. review frequency
+6. owner
+
+Guardrail: Do not use dashboard indicators to make an automatic promotion decision.</div><div class="btns"><button class="btn secondary" onclick="copyText('m3_follow')">Copy follow-up prompt</button></div></div>
+<div class="card green"><div class="big">Examples</div><ul><li>Business exposure hours</li><li>People insight outputs</li><li>Manager advisory practice</li><li>Mentor feedback score</li><li>IDP milestone completion</li></ul></div>
+</div>
+</div></section>
+<section class="slide" data-level="REVIEW"><div class="screen">
+<div class="kicker"><span class="dot"></span> OUTPUT REVIEW</div>
+<h2 class="title">Before using AI output, check 5 things</h2>
+<div class="grid two">
+<div class="card green"><div class="big">Quality checks</div><ol><li>Is the output based on the data provided?</li><li>Did AI invent or overgeneralize?</li><li>Is there evidence for each recommendation?</li><li>Is the output usable for the HR audience?</li><li>Is human review clearly required before action?</li></ol></div>
+<div class="card yellow"><div class="big">Mission-specific checks</div><ul><li><b>Communication:</b> Is the CTA clear?</li><li><b>Survey / Dashboard:</b> Are indicators tied to data sources and actions?</li><li><b>IDP:</b> Does the plan include exposure and practice, not just training?</li></ul></div>
+</div>
+<div class="note">The quality of HR AI work depends not only on the prompt, but also on how HR reviews the output.</div>
+</div></section>
+<section class="slide" data-level="BOSS"><div class="screen">
+<div class="kicker"><span class="dot"></span> BOSS BATTLE</div>
+<h2 class="title">Fix weak AI outputs</h2>
+<p class="subtitle">Click each ghost to reveal the fix.</p>
+<div class="ghost-grid">
+<div class="ghost reveal"><span class="face">👻</span><div class="big">Too generic</div><p class="small">The answer could fit any company.</p><span class="clickhint">👆 Click to reveal fix</span><div class="hidden small"><b>Fix:</b> Add clearer criteria and ask AI to show evidence for each recommendation.</div></div>
+<div class="ghost reveal"><span class="face">👻</span><div class="big">Invents facts</div><p class="small">AI fills in context that was never provided.</p><span class="clickhint">👆 Click to reveal fix</span><div class="hidden small"><b>Fix:</b> Add a guardrail: if information is missing, say what needs validation instead of guessing.</div></div>
+<div class="ghost reveal"><span class="face">👻</span><div class="big">Overreaches</div><p class="small">AI starts deciding ratings, promotion, or readiness.</p><span class="clickhint">👆 Click to reveal fix</span><div class="hidden small"><b>Fix:</b> Add a decision boundary: AI supports analysis, but HR and managers decide.</div></div>
+</div>
+</div></section>
+<section class="slide" data-level="ACTION"><div class="screen">
+<div class="kicker"><span class="dot"></span> PERSONAL ACTION PLAN</div>
+<h2 class="title">Your next mission</h2>
+<p class="subtitle">Capture one realistic way you will use AI after the workshop. These notes will be included in the final export file.</p>
+<div class="split">
+<div class="card">
+<div class="workspace">
+<div class="wrow"><label>Use case</label><textarea class="textarea save" data-key="ap_usecase" placeholder="One HR use case I will try in the next 7 days..."></textarea></div>
+<div class="wrow"><label>Data needed</label><textarea class="textarea save" data-key="ap_data" placeholder="What data or input do I need to prepare?"></textarea></div>
+<div class="wrow"><label>Criteria</label><textarea class="textarea save" data-key="ap_criteria" placeholder="What criteria should I use so the output is not generic?"></textarea></div>
+</div>
+</div>
+<div class="card">
+<div class="workspace">
+<div class="wrow"><label>Review</label><textarea class="textarea save" data-key="ap_review" placeholder="Who needs to review the output before use?"></textarea></div>
+<div class="wrow"><label>Risk</label><textarea class="textarea save" data-key="ap_risk" placeholder="What risk should I watch for?"></textarea></div>
+<div class="wrow"><label>Improve</label><textarea class="textarea save" data-key="ap_improve" placeholder="One prompt improvement I want to test..."></textarea></div>
+</div>
+</div>
+</div>
+</div></section>
+<section class="slide" data-level="EXPORT"><div class="screen">
+<h2 class="title">Export all workshop work</h2>
+<div class="grid two">
+<div class="card"><div class="big">What will be included</div><ul><li>Mission 1 prompt</li><li>Mission 2 survey analysis prompt</li><li>Mission 3 IDP prompt</li><li>Personal action plan notes</li></ul></div>
+<div class="card green"><div class="big">How to use it</div><ol><li>Download the .txt file</li><li>Open it on your computer</li><li>Copy a prompt</li><li>Paste into your AI tool</li><li>Review the output using HR judgment</li></ol></div>
+</div>
+<div class="btns"><button class="btn cyan" onclick="downloadAll()">Export all .txt</button></div>
+</div></section>
+<section class="slide" data-level="TAKEAWAY"><div class="screen center">
+<div class="kicker"><span class="dot"></span> FINAL TAKEAWAY</div>
+<h2 class="title">Better HR AI starts with better HR thinking</h2>
+<p class="subtitle">Clear goal. Relevant context. Real data. Explicit criteria. Usable output. Guardrails. Human review.</p>
+<div class="grid three" style="width:100%">
+<div class="card cyan"><div class="big">AI can prepare</div><p class="small">Draft, summarize, compare, suggest.</p></div>
+<div class="card yellow"><div class="big">HR must validate</div><p class="small">Evidence, fairness, policy, local context.</p></div>
+<div class="card pink"><div class="big">Humans decide</div><p class="small">Performance, promotion, hiring, readiness.</p></div>
+</div>
+<div class="btns"><button class="btn" onclick="go(0)">Back to start</button></div>
+</div></section>
+</main>
+<div class="footer">
+<div class="navgroup"><button class="navbtn" id="prevBtn" onclick="prev()">◀ Back</button><button class="navbtn" onclick="go(3)">Map</button><button class="navbtn" onclick="toggleNotes()">Notes</button></div>
+<div class="counter" id="counter">1 / 27</div>
+<div class="navgroup"><button class="navbtn lang-toggle" onclick="toggleLanguage()">Thai</button><button class="navbtn" onclick="toggleFull()">Full screen</button><button class="navbtn" id="nextBtn" onclick="next()">Next ▶</button></div>
+</div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let idx=0;
+const bar=document.getElementById('bar'),barText=document.getElementById('barText'),counter=document.getElementById('counter'),levelPill=document.getElementById('levelPill');
+function avail(){const top=document.querySelector('.topbar'),foot=document.querySelector('.footer');const vv=window.visualViewport;const ww=vv?vv.width:window.innerWidth;const wh=vv?vv.height:window.innerHeight;return{w:ww-24,h:wh-(top?.offsetHeight||0)-(foot?.offsetHeight||0)-16};}
+function clearFit(slide){slide.classList.remove('compact','ultra');const s=slide.querySelector('.screen');if(s){s.style.zoom='1';s.style.marginTop='0px';}}
+function metrics(slide){const s=slide.querySelector('.screen');return s?{w:s.scrollWidth,h:s.scrollHeight}:{w:0,h:0};}
+function fit(){const slide=slides[idx];if(!slide)return;clearFit(slide);let a=avail(),m=metrics(slide);if(m.w>a.w||m.h>a.h)slide.classList.add('compact');m=metrics(slide);if(m.w>a.w||m.h>a.h){slide.classList.remove('compact');slide.classList.add('ultra');m=metrics(slide);}const scale=Math.min(1,a.w/Math.max(1,m.w),a.h/Math.max(1,m.h));const s=slide.querySelector('.screen');if(s){s.style.zoom=String(scale);s.style.marginTop=Math.max(0,(a.h-m.h*scale)/2)+'px';}}
+function update(){slides.forEach((s,i)=>s.classList.toggle('active',i===idx));const pct=Math.round(idx/(slides.length-1)*100);bar.style.width=pct+'%';barText.textContent=pct+'%';counter.textContent=(idx+1)+' / '+slides.length;levelPill.textContent=slides[idx].dataset.level||'';document.getElementById('prevBtn').disabled=idx===0;document.getElementById('nextBtn').disabled=idx===slides.length-1;localStorage.setItem('hrmaze_v3_idx',idx);setTimeout(fit,40);setTimeout(fit,160);refreshStatuses();}
+function go(i){idx=Math.max(0,Math.min(slides.length-1,i));update()}function next(){go(idx+1)}function prev(){go(idx-1)}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',1800)}
+function toggleFull(){if(!document.fullscreenElement){document.documentElement.requestFullscreen?.()}else{document.exitFullscreen?.()}}
+function toggleNotes(){document.body.classList.toggle('show-notes');setTimeout(fit,60)}
+function markQuiz(el,correct){[...el.parentElement.querySelectorAll('.quiz-option')].forEach(x=>x.classList.remove('correct','wrong'));el.classList.add(correct?'correct':'wrong');toast(correct?'Correct':'Try the other option')}
+function setupReveals(){document.querySelectorAll('.reveal').forEach(el=>el.addEventListener('click',()=>{const h=el.querySelector('.hidden');if(h){h.classList.toggle('show');el.classList.add('revealed');setTimeout(fit,50)}}))}
+function save(){document.querySelectorAll('.save').forEach(el=>{if(el.dataset.key)localStorage.setItem('hrmaze_v3_'+el.dataset.key,el.value)});refreshStatuses();}
+function load(){document.querySelectorAll('.save').forEach(el=>{const v=localStorage.getItem('hrmaze_v3_'+el.dataset.key);if(v!==null)el.value=v;el.addEventListener('input',save)})}
+function minOK(v){return (v||'').trim().length>=18}
+function reqDone(prefix){const required=[...document.querySelectorAll('.'+prefix+'req')];return required.filter(el=>minOK(el.value)).length}
+function refreshStatuses(){['m1','m2','m3'].forEach(prefix=>{const required=[...document.querySelectorAll('.'+prefix+'req')];const st=document.getElementById(prefix+'_status');if(st)st.textContent='Required fields completed: '+reqDone(prefix)+' / '+required.length;})}
+function getVal(key){return (document.querySelector('[data-key="'+key+'"]')?.value||'').trim();}
+function requireFields(prefix){const required=[...document.querySelectorAll('.'+prefix+'req')];const missing=required.filter(el=>!minOK(el.value));if(missing.length){toast('Complete required fields first. Add more detail.');missing[0].focus();return false}return true}
+function buildPrompt(prefix,fields,includeCriteria){if(!requireFields(prefix))return;let txt='';const map={goal:'Goal',context:'Context',data:'Data',criteria:'Criteria',output:'Output',guardrail:'Guardrails'};fields.forEach(f=>{txt+=map[f]+':\n'+getVal(prefix+'_'+f)+'\n\n'});txt+='Now create the requested output.';document.getElementById(prefix+'_result').innerText=txt;localStorage.setItem('hrmaze_v3_'+prefix+'_built','1');toast('Prompt built');setTimeout(fit,60)}
+function hasThai(text){return /[\u0E00-\u0E7F]/.test(text||'')}
+function creditInstructionForCopy(text){return hasThai(text)
+  ? 'กรุณาใส่บรรทัดเครดิตนี้ไว้ท้ายคำตอบ:\nจัดทำโดย ธีรภาพ ตระการผล (ดิว HR ข้างบ้าน)'
+  : 'Please include this credit line at the end of your response:\nCreated by Teerapap Trakarnphol (Dew HR Khangban)'}
+function footerCreditForTxt(text){return hasThai(text)
+  ? '---\nจัดทำโดย ธีรภาพ ตระการผล (ดิว HR ข้างบ้าน)'
+  : '---\nCreated by Teerapap Trakarnphol (Dew HR Khangban)'}
+function ensureCopyCredit(text){const th='กรุณาใส่บรรทัดเครดิตนี้ไว้ท้ายคำตอบ:';const en='Please include this credit line at the end of your response:';if((text||'').includes(th)||(text||'').includes(en))return text;return (text||'').replace(/\s+$/,'')+'\n\n'+creditInstructionForCopy(text)}
+function ensureTxtFooter(text){const th='จัดทำโดย ธีรภาพ ตระการผล (ดิว HR ข้างบ้าน)';const en='Created by Teerapap Trakarnphol (Dew HR Khangban)';if((text||'').includes(th)||(text||'').includes(en))return text;return (text||'').replace(/\s+$/,'')+'\n\n'+footerCreditForTxt(text)+'\n'}
+function copyText(id){const text=document.getElementById(id).innerText;navigator.clipboard?.writeText(ensureCopyCredit(text));toast('Copied')}
+function copyPrompt(prefix){const text=document.getElementById(prefix+'_result').innerText;if(!localStorage.getItem('hrmaze_v3_'+prefix+'_built')||text.startsWith('Complete')){toast('Build your prompt first');return}navigator.clipboard?.writeText(ensureCopyCredit(text));toast('Copied')}
+function sectionText(prefix,title){const fields=[...document.querySelectorAll('[data-key^="'+prefix+'_"]')];let out=title+'\n'+'='.repeat(title.length)+'\n\n';fields.forEach(el=>{out+=el.dataset.key.replace(prefix+'_','').toUpperCase()+':\n'+el.value.trim()+'\n\n'});out+='GENERATED PROMPT:\n'+document.getElementById(prefix+'_result').innerText+'\n\nReflection:\n1. What did AI do well?\n2. What needs human review?\n3. What would you improve?\n';return out}
+function downloadText(filename,text){const blob=new Blob([ensureTxtFooter(text)],{type:'text/plain'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;a.click();URL.revokeObjectURL(url)}
+function downloadMission(prefix,title){if(!localStorage.getItem('hrmaze_v3_'+prefix+'_built')){toast('Build your prompt first');return}downloadText(title.replace(/[^a-z0-9]+/gi,'_').toLowerCase()+'.txt',sectionText(prefix,title));toast('TXT downloaded')}
+function downloadAll(){let all='AI for HR Workshop Export\n\n';['m1','m2','m3'].forEach((p,i)=>{const titles=['Mission 1 — HR Communication','Mission 2 — Survey Insight Dashboard','Mission 3 — Career IDP Dashboard'];all+=sectionText(p,titles[i])+'\n\n'});all+='PERSONAL ACTION PLAN\n';all+='Use case:\n'+getVal('ap_usecase')+'\n\n';all+='Data needed:\n'+getVal('ap_data')+'\n\n';all+='Criteria:\n'+getVal('ap_criteria')+'\n\n';all+='Human review needed:\n'+getVal('ap_review')+'\n\n';all+='Risk to watch:\n'+getVal('ap_risk')+'\n\n';all+='Prompt improvement to test:\n'+getVal('ap_improve')+'\n';downloadText('ai_for_hr_workshop_export.txt',all);toast('All work exported')}
+function insertSurveySnapshot(){document.querySelector('[data-key="m2_data"]').value=`Survey categories and averages:
+- Job Satisfaction: 3.60
+- Relationship with Management: 3.54
+- Engagement: 3.28
+- Work Environment: 3.62
+- Overall Satisfaction: 3.69
+
+Rating scale:
+Strongly Disagree = 1
+Disagree = 2
+Neutral = 3
+Agree = 4
+Strongly Agree = 5
+
+Notable low signals:
+- I feel engaged in the work I do: 2.54
+- I feel a strong connection to my work and my organization: 2.85
+- My supervisor treats me with respect: 2.92
+- I trust the management of this organization: 3.31
+
+Notable stronger signals:
+- My job offers opportunities for professional growth: 4.23
+- My supervisor provides constructive feedback: 4.23
+- My organization promotes a positive work culture: 3.85
+- I can see myself working here in one year's time: 3.85`;save();toast('Sample survey snapshot inserted')}
+function insertIDPSample(){document.querySelector('[data-key="m3_data"]').value=`Target role: HR Business Partner
+Expected capabilities:
+- Understand business priorities and translate them into HR actions
+- Advise managers on people issues, performance, and workforce planning
+- Use HR data to identify people risks and recommend actions
+- Influence stakeholders and build trust
+- Support career, succession, and development conversations
+
+Current employee profile: Senior HR Officer
+Evidence:
+- Strong delivery in HR operations, onboarding, records, and training coordination
+- Positive feedback for responsiveness and attention to detail
+- Limited exposure to business planning discussions
+- Rarely uses HR data to create insight
+- Less confident when discussing issues with senior managers
+- Often waits for assignments rather than proactively identifying people risks
+- Career aspiration: HRBP within 12 months`;save();toast('Sample IDP case inserted')}
+function defeatGhost(el,msg){el.classList.add('done');el.innerHTML='<span class="face">✅</span><div class="big">Fix applied</div><p class="small">'+msg+'</p>';toast('Fixed');setTimeout(fit,60)}
+function isInput(el){return el&&(el.tagName==='TEXTAREA'||el.tagName==='INPUT'||el.isContentEditable)}
+document.addEventListener('keydown',e=>{if(isInput(document.activeElement))return;const k=e.key.toLowerCase();if(e.key==='ArrowRight'){e.preventDefault();next()}else if(e.key==='ArrowLeft'){e.preventDefault();prev()}else if(k==='m'){e.preventDefault();go(1)}else if(k==='f'){e.preventDefault();toggleFull()}else if(k==='n'){e.preventDefault();toggleNotes()}})
+window.addEventListener('resize',()=>setTimeout(fit,70));window.addEventListener('orientationchange',()=>setTimeout(fit,250));window.visualViewport?.addEventListener('resize',()=>setTimeout(fit,70));document.addEventListener('fullscreenchange',()=>setTimeout(fit,70));
+setupReveals();load();idx=parseInt(localStorage.getItem('hrmaze_v3_idx')||'0',10)||0;update();
+</script>
+
+<script>
+window.__LANG__ = localStorage.getItem('hrmaze_lang') || 'en';
+const I18N_TH = {"AI for HR — Navigate the Maze": "AI for HR — นำทางในเขาวงกต", "3 hands-on missions": "3 ภารกิจลงมือทำ", "Survey data included": "มีข้อมูล Survey ให้ฝึก", "Subtle animations": "แอนิเมชันแบบไม่รบกวนสายตา", "INTRO": "เริ่มต้น", "AI FOR HR WORKSHOP": "เวิร์กช็อป AI สำหรับ HR", "Navigate the Maze": "นำทางในเขาวงกต", "Start simple, end professional: participants will build prompts they can export as .txt files and test in their": "เริ่มจากเรื่องง่าย แล้วไปจบที่งานแบบมืออาชีพ: ผู้เรียนจะสร้าง Prompt ที่ Export เป็นไฟล์ .txt และนำไปทดลองใน", "AI tool": "เครื่องมือ AI", ".": ".", "Beginner-friendly AI": "AI ที่เหมาะกับผู้เริ่มต้น", "No technical setup. Type in the deck, build the prompt, export the text.": "ไม่ต้องตั้งค่าทางเทคนิค พิมพ์ในสไลด์ สร้าง Prompt แล้ว Export เป็นข้อความได้เลย", "Professional HR logic": "มุมคิดแบบ HR มืออาชีพ", "Evidence, criteria, dashboard thinking, and human review are built into the missions.": "ภารกิจจะพาใช้หลักฐาน เกณฑ์การวิเคราะห์ Dashboard Thinking และ Human Review", "Final destination": "ปลายทางของคลาส", "Career / IDP gap analysis with development dashboard indicators.": "วิเคราะห์ช่องว่าง Career / IDP พร้อมตัวชี้วัด Dashboard สำหรับติดตามการพัฒนา", "Enter the maze": "เข้าสู่เขาวงกต", "SURVEY INSIGHT": "Insight จาก Survey", "Why this workshop is designed this way": "ทำไมเวิร์กช็อปนี้จึงถูกออกแบบแบบนี้", "The pre-workshop survey shows a practical audience: many are still building confidence with AI, while the topics they want to explore are strategic HR topics.": "ผล Survey ก่อนเรียนสะท้อนว่าผู้เรียนอยากได้เนื้อหาที่ใช้งานได้จริง หลายคนยังอยู่ระหว่างสร้างความมั่นใจกับ AI แต่หัวข้อที่อยากสำรวจเป็นเรื่อง HR เชิงกลยุทธ์", "AI readiness": "ความพร้อมด้าน AI", "Mostly early-stage users": "ส่วนใหญ่ยังอยู่ช่วงเริ่มต้นใช้งาน AI", "Some participants already experiment with AI": "บางคนเริ่มทดลองใช้ AI แล้ว", "Content should stay practical and guided": "เนื้อหาจึงควรเป็นแบบใช้งานจริงและมีตัวอย่างนำทาง", "Current AI use": "การใช้ AI ในปัจจุบัน", "Email and internal communication": "อีเมลและการสื่อสารภายใน", "Reports and summaries": "รายงานและการสรุปข้อมูล", "Recruitment support": "การสนับสนุนงานสรรหา", "Training materials": "สื่อและเอกสารการเรียนรู้", "High-interest areas": "หัวข้อที่สนใจมาก", "HR Dashboard / Analytics": "HR Dashboard / Analytics", "Performance and Promotion": "Performance และ Promotion", "Workforce Planning": "Workforce Planning", "Career Path and IDP": "Career Path และ IDP", "Training and Development": "Training and Development", "Workshop design note: start with simple tasks, then move toward survey insight, dashboard thinking, and Career / IDP support.": "หมายเหตุการออกแบบ: เริ่มจากงานง่าย แล้วค่อยไปสู่ Survey Insight, Dashboard Thinking และการสนับสนุน Career / IDP", "HR AI MATURITY": "ระดับการใช้ AI ในงาน HR", "From writing assistant to HR thinking support": "จากผู้ช่วยเขียน สู่ผู้ช่วยคิดเชิง HR", "1. Drafting": "1. Drafting", "AI creates a first draft.": "AI ช่วยสร้างร่างแรก", "Example:": "ตัวอย่าง:", "HR email": "อีเมล HR", "2. Structuring": "2. Structuring", "AI organizes information.": "AI ช่วยจัดโครงสร้างข้อมูล", "report summary": "สรุปรายงาน", "3. Analysis": "3. Analysis", "AI identifies patterns and risks.": "AI ช่วยหา Pattern และความเสี่ยง", "survey insight": "Insight จาก Survey", "4. Decision-prep": "4. Decision-prep", "AI supports people discussions.": "AI ช่วยเตรียมข้อมูลสำหรับการคุยเรื่องคน", "IDP / performance discussion": "IDP / Performance Discussion", "5. Workflow Assistant": "5. Workflow Assistant", "AI follows a repeatable process.": "AI ทำงานตามขั้นตอนที่ทำซ้ำได้", "HR report agent": "HR Report Agent", "Today we practice Levels 1–4. Level 5 is possible, but it requires more customization, testing, and governance.": "วันนี้เราจะฝึกระดับ 1–4 ส่วนระดับ 5 ทำได้ แต่ต้องมีการปรับแต่ง ทดสอบ และกำกับดูแลเพิ่มเติม", "JOURNEY MAP": "แผนที่การเรียนรู้", "Today’s route": "เส้นทางวันนี้", "DEMO": "DEMO", "Final Boss Preview": "ตัวอย่างปลายทาง", "Show IDP + Dashboard before teaching the framework.": "เห็นภาพ IDP + Dashboard ก่อนเรียน Framework", "FRAMEWORK": "FRAMEWORK", "Prompt Path": "Prompt Path", "Goal, Context, Data, Criteria, Output, Guardrail.": "Goal, Context, Data, Criteria, Output, Guardrail", "SAFETY": "ความปลอดภัย", "Human Review": "Human Review", "AI prepares; HR decides.": "AI ช่วยเตรียมข้อมูล HR เป็นผู้ตัดสินใจ", "HANDS-ON": "ลงมือทำ", "3 Missions": "3 ภารกิจ", "Communication, Survey → Dashboard, Career / IDP.": "Communication, Survey → Dashboard, Career / IDP", "EXPORT": "EXPORT", "Boss Battle": "Boss Battle", "Fix weak outputs and export all work.": "แก้ Output ที่อ่อนและ Export งานทั้งหมด", "Hands-on missions require participants to type. Build / Copy / Export will not work until required fields are completed.": "ภารกิจลงมือทำต้องให้ผู้เรียนพิมพ์เอง ปุ่ม Build / Copy / Export จะยังใช้ไม่ได้จนกว่าจะกรอกช่องที่จำเป็นครบ", "FINAL DESTINATION PREVIEW": "ดูปลายทางก่อนเริ่ม", "By the end, you can build this": "เมื่อจบคลาส คุณจะสร้างสิ่งนี้ได้", "A prompt that helps HR compare a target role with current employee evidence, identify gaps, create an IDP, and suggest dashboard indicators.": "Prompt ที่ช่วยให้ HR เปรียบเทียบ Target Role กับหลักฐานของพนักงานปัจจุบัน หา Gap สร้าง IDP และเสนอ Dashboard Indicators", "1. Gap Analysis": "1. Gap Analysis", "Target role requirement vs current profile evidence.": "เปรียบเทียบ Target Role Requirement กับ Current Profile Evidence", "2. 6-Month IDP": "2. IDP ระยะ 6 เดือน", "Development actions, learning methods, support, and success measures.": "Development Actions, Learning Methods, Support และ Success Measures", "3. Development Dashboard": "3. Development Dashboard", "Indicators that track whether development is actually happening.": "ตัวชี้วัดที่ติดตามว่าการพัฒนาเกิดขึ้นจริงหรือไม่", "Bad prompt first": "เริ่มจาก Prompt ที่ยังอ่อน", "Weak prompt": "Weak Prompt", "Create an IDP for an employee who wants to become an HRBP.": "Create an IDP for an employee who wants to become an HRBP.", "What is missing?": "ขาดอะไรไป?", "Click to reveal what HR cannot trust yet.": "คลิกเพื่อดูว่าส่วนไหนที่ HR ยังไม่ควรเชื่อทันที", "👆 Click to reveal": "👆 คลิกเพื่อดู", "No target role requirement": "ไม่มี Target Role Requirement", "No current employee evidence": "ไม่มีหลักฐานของพนักงานปัจจุบัน", "No criteria for comparison": "ไม่มีเกณฑ์ในการเปรียบเทียบ", "No development priority": "ไม่มีลำดับความสำคัญในการพัฒนา", "No success measure": "ไม่มี Success Measure", "No dashboard indicators": "ไม่มี Dashboard Indicators", "No human decision boundary": "ไม่มีขอบเขตการตัดสินใจของมนุษย์", "Better output preview": "ตัวอย่าง Output ที่ดีขึ้น", "Gap Analysis": "Gap Analysis", "Business acumen, HR data insight, advisory skill, stakeholder influence, proactive behavior.": "Business Acumen, HR Data Insight, Advisory Skill, Stakeholder Influence, Proactive Behavior", "6-Month IDP": "IDP ระยะ 6 เดือน", "Shadowing, guided analytics practice, workforce planning exposure, role play, mini insight project.": "Shadowing, ฝึก Analytics แบบมีคนช่วย, ได้ Exposure เรื่อง Workforce Planning, Role Play, Mini Insight Project", "Dashboard Indicators": "Dashboard Indicators", "Business exposure hours, people insight outputs, advisory practice, manager feedback, IDP milestones.": "Business Exposure Hours, People Insight Outputs, Advisory Practice, Manager Feedback, IDP Milestones", "Note: The better output is not better because the prompt is longer. It is better because it has evidence, criteria, output format, and guardrails.": "หมายเหตุ: Output ที่ดีขึ้นไม่ได้ดีเพราะ Prompt ยาวขึ้น แต่ดีขึ้นเพราะมี Evidence, Criteria, Output Format และ Guardrails", "What made the better prompt better?": "อะไรทำให้ Prompt ดีขึ้น?", "Goal": "Goal", "Analyze readiness and create an IDP.": "วิเคราะห์ความพร้อมและสร้าง IDP", "Context": "Context", "Support HR, manager, and employee discussion.": "สนับสนุนบทสนทนาระหว่าง HR, Manager และพนักงาน", "Data": "Data", "Target role + current employee profile.": "Target Role + Current Employee Profile", "Criteria": "Criteria", "Performance, skill, experience, behavior, exposure.": "Performance, Skill, Experience, Behavior, Exposure", "Output": "Output", "Gap, priorities, IDP, dashboard indicators.": "Gap, Priorities, IDP, Dashboard Indicators", "Guardrail": "Guardrail", "AI supports; HR decides.": "AI สนับสนุน HR ตัดสินใจ", "HR PROMPT PATH": "HR PROMPT PATH", "A simple structure for stronger HR prompts": "โครงสร้างง่าย ๆ สำหรับ Prompt HR ที่แข็งแรงขึ้น", "What do you want AI to help you do?": "อยากให้ AI ช่วยทำอะไร?", "Who is this for and why does it matter?": "ใช้กับใคร และทำไมเรื่องนี้สำคัญ?", "What information should AI use?": "AI ควรใช้ข้อมูลอะไร?", "How should AI analyze or compare?": "AI ควรวิเคราะห์หรือเปรียบเทียบอย่างไร?", "What format should the answer take?": "อยากได้คำตอบในรูปแบบใด?", "What must AI not do?": "AI ห้ามทำอะไร?", "Why criteria matters most": "ทำไม Criteria จึงสำคัญที่สุด", "Without criteria": "ถ้าไม่มี Criteria", "AI often gives generic recommendations that sound good but do not match the HR problem.": "AI มักให้คำแนะนำกว้าง ๆ ที่ฟังดูดี แต่ไม่ตรงกับปัญหา HR จริง", "With criteria": "ถ้ามี Criteria", "AI can compare, prioritize, and explain why an HR action or risk area matters.": "AI สามารถเปรียบเทียบ จัดลำดับความสำคัญ และอธิบายว่าทำไม HR Action หรือ Risk Area นั้นสำคัญ", "Examples of HR criteria: performance evidence, competency framework, role requirement, business impact, urgency, fairness, risk level, data quality.": "ตัวอย่าง HR Criteria: Performance Evidence, Competency Framework, Role Requirement, Business Impact, Urgency, Fairness, Risk Level, Data Quality", "Quick check": "Quick Check", "Choose the right prompt path box.": "เลือกช่อง Prompt Path ที่ถูกต้อง", "“Compare against HRBP role requirements.”": "“เปรียบเทียบกับ HRBP Role Requirements”", "“Present the result as a gap analysis table.”": "“แสดงผลเป็นตาราง Gap Analysis”", "“Use manager feedback and recent performance evidence.”": "“ใช้ Manager Feedback และ Performance Evidence ล่าสุด”", "Role": "Role", "“Do not decide whether the employee should be promoted.”": "“ห้ามตัดสินว่าพนักงานควรได้เลื่อนตำแหน่งหรือไม่”", "RESPONSIBLE AI FOR HR": "Responsible AI สำหรับ HR", "AI can prepare. HR decides.": "AI ช่วยเตรียมข้อมูล HR เป็นผู้ตัดสินใจ", "Good use": "ใช้ได้ดีเมื่อ", "Organize evidence": "จัดหลักฐานให้เป็นระบบ", "Compare against criteria": "เปรียบเทียบกับ Criteria", "Suggest questions": "เสนอคำถาม", "Highlight missing data": "ชี้ข้อมูลที่ยังขาด", "Prepare discussion options": "เตรียมทางเลือกสำหรับการพูดคุย", "Risky use": "ใช้แบบเสี่ยงเมื่อ", "Decide promotion": "ตัดสินการเลื่อนตำแหน่ง", "Assign rating": "ให้ Rating", "Select final candidate": "เลือก Candidate สุดท้าย", "Invent missing facts": "แต่งข้อมูลที่ไม่มี", "Use identifiable personal data carelessly": "ใช้ข้อมูลส่วนบุคคลแบบไม่ระวัง", "Risky vs better prompts": "Prompt แบบเสี่ยง vs แบบดีกว่า", "Click each card to inspect the risk and better version.": "คลิกแต่ละการ์ดเพื่อดูความเสี่ยงและเวอร์ชันที่ดีกว่า", "Promotion": "Promotion", "“Should this employee be promoted?”": "“พนักงานคนนี้ควรได้เลื่อนตำแหน่งไหม?”", "👆 Click to improve": "👆 คลิกเพื่อปรับให้ดีขึ้น", "Better:": "ดีกว่า:", "Create a readiness checklist based on performance evidence, target role expectations, business need, and missing evidence. Do not decide the outcome.": "สร้าง Readiness Checklist จาก Performance Evidence, Target Role Expectations, Business Need และ Missing Evidence โดยไม่ตัดสินผลลัพธ์แทนมนุษย์", "Performance": "Performance", "“Rate this employee’s performance.”": "“ให้คะแนน Performance ของพนักงานคนนี้”", "Organize evidence into strengths, development areas, unclear evidence, and manager clarification questions. Do not assign a rating.": "จัดหลักฐานเป็น Strengths, Development Areas, Unclear Evidence และคำถามที่ Manager ควรถามเพิ่ม โดยไม่ให้ Rating", "Dashboard": "Dashboard", "“Create an HR dashboard.”": "“สร้าง HR Dashboard”", "Suggest indicators for a specific HR issue. Explain measure, why it matters, data source, interpretation, and action.": "เสนอ Indicator สำหรับ HR Issue ที่ชัดเจน พร้อมอธิบายสิ่งที่วัด เหตุผล Data Source การตีความ และ Action", "HANDS-ON MISSION 1": "ภารกิจลงมือทำ 1", "HR Communication": "HR Communication", "Scenario": "Scenario", "HR needs to invite people managers to a Performance Feedback Calibration Session. The goal is to improve consistency, fairness, and clarity in performance feedback.": "HR ต้องเชิญ People Managers เข้าร่วม Performance Feedback Calibration Session เพื่อเพิ่มความสม่ำเสมอ ความเป็นธรรม และความชัดเจนในการให้ Feedback", "You must type your own entries. Build / Copy / Export only unlock after required fields are completed.": "คุณต้องพิมพ์ข้อมูลเอง ปุ่ม Build / Copy / Export จะเปิดใช้งานเมื่อกรอกข้อมูลที่จำเป็นครบแล้ว", "What to include": "สิ่งที่ควรใส่", "Audience: people managers": "ผู้รับสาร: People Managers", "Purpose: consistency and fairness in feedback": "วัตถุประสงค์: ความสม่ำเสมอและความเป็นธรรมในการ Feedback", "Data: date, time, location/link, preparation": "ข้อมูล: วันที่ เวลา สถานที่/ลิงก์ สิ่งที่ต้องเตรียม", "Output: subject line, email body, CTA": "Output: Subject Line, Email Body, CTA", "Mission 1 workspace": "พื้นที่ทำงาน Mission 1", "Goal*": "Goal*", "Context*": "Context*", "Data*": "Data*", "Output*": "Output*", "Required fields completed: 0 / 4": "กรอกข้อมูลที่จำเป็นแล้ว: 0 / 4", "Build Prompt": "Build Prompt", "Copy": "Copy", "Export .txt": "Export .txt", "Generated prompt": "Prompt ที่สร้างแล้ว", "Complete the required fields, then click Build Prompt.": "กรอกข้อมูลที่จำเป็นให้ครบ แล้วกด Build Prompt", "HANDS-ON MISSION 2": "ภารกิจลงมือทำ 2", "Survey Insight → Dashboard": "Survey Insight → Dashboard", "We will use the mock employee satisfaction survey file as the source for a prepared data snapshot.": "เราจะใช้ไฟล์ Mock Employee Satisfaction Survey เป็นแหล่งข้อมูลสำหรับ Data Snapshot ที่เตรียมไว้", "Dataset categories": "หมวดข้อมูลใน Dataset", "Job Satisfaction": "Job Satisfaction", "Relationship with Management": "Relationship with Management", "Engagement": "Engagement", "Work Environment": "Work Environment", "Overall Satisfaction": "Overall Satisfaction", "Rating scale": "Rating Scale", "Strongly Disagree = 1": "Strongly Disagree = 1", "Disagree = 2": "Disagree = 2", "Neutral = 3": "Neutral = 3", "Agree = 4": "Agree = 4", "Strongly Agree = 5": "Strongly Agree = 5", "Prepared survey snapshot": "Survey Snapshot ที่เตรียมไว้", "Category averages": "ค่าเฉลี่ยตามหมวด", "Notable signals": "สัญญาณที่น่าสนใจ", "Names exist in the mock file, but the analysis should be category-level. Do not identify individuals in the final insight.": "ในไฟล์ Mock มีชื่ออยู่ แต่การวิเคราะห์ควรทำในระดับหมวดหมู่ ไม่ควรระบุชื่อบุคคลใน Final Insight", "DASHBOARD THINKING": "Dashboard Thinking", "A dashboard starts with a decision, not a chart": "Dashboard เริ่มจากการตัดสินใจ ไม่ใช่เริ่มจากกราฟ", "Ask before creating indicators": "ถามก่อนสร้าง Indicators", "What decision needs support?": "ต้องการสนับสนุนการตัดสินใจเรื่องอะไร?", "Who will use the dashboard?": "ใครจะใช้ Dashboard นี้?", "What risk or opportunity are we monitoring?": "เรากำลังติดตามความเสี่ยงหรือโอกาสอะไร?", "What data source is available?": "มี Data Source อะไรอยู่?", "What HR action should follow?": "หากเห็นสัญญาณนี้ HR ควรทำอะไรต่อ?", "Examples": "ตัวอย่าง", "Low engagement": "Engagement ต่ำ", "→ Engagement Index → investigate root causes": "→ Engagement Index → หาสาเหตุเชิงลึก", "Low management trust": "ความเชื่อมั่นต่อ Management ต่ำ", "→ Management Trust Score → manager enablement": "→ Management Trust Score → พัฒนา Manager Enablement", "Low training relevance": "Training Relevance ต่ำ", "→ Training Relevance Score → redesign TNA": "→ Training Relevance Score → ปรับ TNA ใหม่", "Low IDP progress": "IDP Progress ต่ำ", "→ IDP Milestone Completion → manager follow-up": "→ IDP Milestone Completion → ให้ Manager ติดตาม", "Mission 2 asks participants to turn survey data into HR insight and dashboard indicators, not just summarize responses.": "Mission 2 ให้ผู้เรียนเปลี่ยน Survey Data เป็น HR Insight และ Dashboard Indicators ไม่ใช่แค่สรุปคำตอบ", "Mission 2 workspace": "พื้นที่ทำงาน Mission 2", "Criteria*": "Criteria*", "Guardrail*": "Guardrail*", "Required fields completed: 0 / 6": "กรอกข้อมูลที่จำเป็นแล้ว: 0 / 6", "Insert sample survey snapshot": "ใส่ตัวอย่าง Survey Snapshot", "Dashboard follow-up prompt": "Dashboard Follow-up Prompt", "Copy follow-up prompt": "Copy Follow-up Prompt", "Examples of useful indicators": "ตัวอย่าง Indicators ที่มีประโยชน์", "Engagement Index": "Engagement Index", "Management Trust Score": "Management Trust Score", "Career Growth Score": "Career Growth Score", "Feedback Quality Score": "Feedback Quality Score", "Work Environment Score": "Work Environment Score", "DEMO ONLY": "DEMO เท่านั้น", "Performance / Promotion Support": "Performance / Promotion Support", "Risky prompt": "Prompt แบบเสี่ยง", "Should this employee be promoted?": "พนักงานคนนี้ควรได้เลื่อนตำแหน่งไหม?", "Better prompt": "Prompt ที่ดีกว่า", "Create a promotion readiness discussion checklist using performance evidence, target role expectations, competency examples, business need, and missing evidence. Do not decide the promotion outcome.": "สร้าง Promotion Readiness Discussion Checklist โดยใช้ Performance Evidence, Target Role Expectations, Competency Examples, Business Need และ Missing Evidence โดยไม่ตัดสินผล Promotion แทนมนุษย์", "This remains a demo so the workshop does not become too rushed. Key point: AI organizes evidence and questions; it does not make the people decision.": "ส่วนนี้เป็น Demo เพื่อไม่ให้ Workshop เร่งเกินไป ประเด็นสำคัญคือ AI ช่วยจัดหลักฐานและคำถาม แต่ไม่ตัดสินใจแทนคน", "HANDS-ON MISSION 3": "ภารกิจลงมือทำ 3", "Career / IDP Gap Analysis + Dashboard": "Career / IDP Gap Analysis + Dashboard", "Target role: HR Business Partner": "Target Role: HR Business Partner", "Understands business priorities": "เข้าใจ Business Priorities", "Advises managers on people issues": "ให้คำปรึกษา Manager เรื่อง People Issues", "Uses HR data to identify risks": "ใช้ HR Data เพื่อระบุความเสี่ยง", "Influences stakeholders": "Influence Stakeholders", "Supports talent and succession discussions": "สนับสนุน Talent และ Succession Discussions", "Current profile: Senior HR Officer": "Current Profile: Senior HR Officer", "Strong HR operations delivery": "ทำงาน HR Operations ได้แข็งแรง", "Good onboarding and training coordination": "ทำ Onboarding และ Training Coordination ได้ดี", "Limited business planning exposure": "มี Business Planning Exposure จำกัด", "Limited use of HR data for insight": "ใช้ HR Data เพื่อ Insight ยังจำกัด", "Needs more confidence with senior managers": "ต้องเพิ่มความมั่นใจเมื่อคุยกับ Senior Managers", "Mission 3 workspace": "พื้นที่ทำงาน Mission 3", "Insert sample case": "ใส่ตัวอย่าง Case", "Development dashboard follow-up": "Development Dashboard Follow-up", "Business exposure hours": "Business Exposure Hours", "People insight outputs": "People Insight Outputs", "Manager advisory practice": "Manager Advisory Practice", "Mentor feedback score": "Mentor Feedback Score", "IDP milestone completion": "IDP Milestone Completion", "OUTPUT REVIEW": "Output Review", "Before using AI output, check 5 things": "ก่อนใช้ Output จาก AI ให้ตรวจ 5 เรื่อง", "Quality checks": "Quality Checks", "Is the output based on the data provided?": "Output อ้างอิงข้อมูลที่ให้ไปหรือไม่?", "Did AI invent or overgeneralize?": "AI แต่งข้อมูลหรือสรุปกว้างเกินไปหรือไม่?", "Is there evidence for each recommendation?": "แต่ละ Recommendation มี Evidence รองรับหรือไม่?", "Is the output usable for the HR audience?": "Output ใช้ได้กับ Audience ของ HR หรือไม่?", "Is human review clearly required before action?": "มีการระบุชัดเจนหรือไม่ว่าต้อง Human Review ก่อนใช้จริง?", "Mission-specific checks": "Mission-specific Checks", "Communication:": "Communication:", "Is the CTA clear?": "CTA ชัดเจนหรือไม่?", "Survey / Dashboard:": "Survey / Dashboard:", "Are indicators tied to data sources and actions?": "Indicators เชื่อมกับ Data Source และ Action หรือไม่?", "IDP:": "IDP:", "Does the plan include exposure and practice, not just training?": "แผนมี Exposure และ Practice ไม่ใช่แค่ Training หรือไม่?", "The quality of HR AI work depends not only on the prompt, but also on how HR reviews the output.": "คุณภาพของงาน HR AI ไม่ได้ขึ้นอยู่กับ Prompt อย่างเดียว แต่ขึ้นอยู่กับวิธีที่ HR ตรวจ Output ด้วย", "BOSS BATTLE": "Boss Battle", "Fix weak AI outputs": "แก้ Output จาก AI ที่ยังอ่อน", "Click each ghost to reveal the fix.": "คลิกแต่ละ Ghost เพื่อดูวิธีแก้", "Too generic": "กว้างเกินไป", "The answer could fit any company.": "คำตอบใช้ได้กับทุกบริษัท", "👆 Click to reveal fix": "👆 คลิกเพื่อดูวิธีแก้", "Fix:": "วิธีแก้:", "Add clearer criteria and ask AI to show evidence for each recommendation.": "เพิ่ม Criteria ให้ชัด และให้ AI แสดง Evidence ของแต่ละ Recommendation", "Invents facts": "แต่งข้อมูล", "AI fills in context that was never provided.": "AI เติม Context ที่ไม่ได้ให้ไว้", "Add a guardrail: if information is missing, say what needs validation instead of guessing.": "เพิ่ม Guardrail: ถ้าข้อมูลไม่พอ ให้บอกว่าต้อง Validate อะไร แทนการเดา", "Overreaches": "ตัดสินใจเกินขอบเขต", "AI starts deciding ratings, promotion, or readiness.": "AI เริ่มตัดสิน Rating, Promotion หรือ Readiness", "Add a decision boundary: AI supports analysis, but HR and managers decide.": "เพิ่ม Decision Boundary: AI ช่วยวิเคราะห์ แต่ HR และ Manager เป็นผู้ตัดสินใจ", "PERSONAL ACTION PLAN": "Personal Action Plan", "Your next mission": "ภารกิจต่อไปของคุณ", "Capture one realistic way you will use AI after the workshop. These notes will be included in the final export file.": "จดวิธีที่คุณจะนำ AI ไปใช้จริงหลัง Workshop ข้อมูลนี้จะอยู่ในไฟล์ Export สุดท้าย", "Use case": "Use Case", "Data needed": "Data Needed", "Review": "Review", "Risk": "Risk", "Improve": "Improve", "Export all workshop work": "Export งานทั้งหมดใน Workshop", "What will be included": "สิ่งที่จะรวมอยู่ในไฟล์", "Mission 1 prompt": "Prompt จาก Mission 1", "Mission 2 survey analysis prompt": "Prompt วิเคราะห์ Survey จาก Mission 2", "Mission 3 IDP prompt": "Prompt IDP จาก Mission 3", "Personal action plan notes": "Notes จาก Personal Action Plan", "How to use it": "วิธีใช้", "Download the .txt file": "ดาวน์โหลดไฟล์ .txt", "Open it on your computer": "เปิดไฟล์ในเครื่องของคุณ", "Copy a prompt": "Copy Prompt", "Paste into your AI tool": "Paste ลงในเครื่องมือ AI", "Review the output using HR judgment": "ตรวจ Output ด้วยวิจารณญาณแบบ HR", "Export all .txt": "Export all .txt", "FINAL TAKEAWAY": "สรุปสุดท้าย", "Better HR AI starts with better HR thinking": "HR AI ที่ดีเริ่มจากการคิดแบบ HR ที่ดี", "Clear goal. Relevant context. Real data. Explicit criteria. Usable output. Guardrails. Human review.": "Goal ชัด Context ตรง Data จริง Criteria ชัด Output ใช้ได้ Guardrails และ Human Review", "AI can prepare": "AI ช่วยเตรียม", "Draft, summarize, compare, suggest.": "Draft, Summarize, Compare, Suggest", "HR must validate": "HR ต้องตรวจสอบ", "Evidence, fairness, policy, local context.": "Evidence, Fairness, Policy, Local Context", "Humans decide": "มนุษย์ตัดสินใจ", "Performance, promotion, hiring, readiness.": "Performance, Promotion, Hiring, Readiness", "Back to start": "กลับไปหน้าแรก", "◀ Back": "◀ ย้อนกลับ", "Map": "แผนที่", "Notes": "Notes", "Full screen": "เต็มจอ", "Next ▶": "ถัดไป ▶"};
+const PLACEHOLDER_TH = {"Example: Draft an internal email inviting managers to a calibration session.": "ตัวอย่าง: ร่างอีเมลภายในเพื่อเชิญ Manager เข้าร่วม Calibration Session", "Who is this for? Why does the session matter?": "อีเมลนี้ส่งถึงใคร และทำไม Session นี้จึงสำคัญ?", "Date, time, venue/link, preparation, call to action.": "วันที่ เวลา สถานที่/ลิงก์ สิ่งที่ต้องเตรียม และ Call to Action", "Subject line, short email body, and CTA.": "Subject Line, เนื้อหาอีเมลสั้น ๆ และ CTA", "Example: Keep the tone supportive, not compliance-heavy.": "ตัวอย่าง: ใช้น้ำเสียงสนับสนุน ไม่เน้นความเป็นข้อบังคับมากเกินไป", "Analyze employee satisfaction survey results and identify key HR insights.": "วิเคราะห์ผล Employee Satisfaction Survey และหา Key HR Insights", "Who will use the insight? What decision or discussion should it support?": "ใครจะใช้ Insight นี้ และควรสนับสนุนการตัดสินใจหรือการพูดคุยเรื่องใด?", "Paste or insert survey snapshot.": "วางหรือกดใส่ Survey Snapshot", "Theme, evidence, possible root cause, impact, HR action, data to validate.": "Theme, Evidence, Possible Root Cause, Impact, HR Action, Data to Validate", "Insight table, recommended actions, and dashboard indicators.": "Insight Table, Recommended Actions และ Dashboard Indicators", "Do not overgeneralize. Do not identify individuals. Mark conclusions that need validation.": "อย่าสรุปกว้างเกินไป ห้ามระบุชื่อบุคคล และให้ระบุข้อสรุปที่ต้อง Validate", "Analyze readiness and build a 6-month IDP for an employee preparing for an HRBP role.": "วิเคราะห์ความพร้อมและสร้าง IDP 6 เดือนสำหรับพนักงานที่เตรียมไปสู่บทบาท HRBP", "This will support a discussion among HR, the manager, and the employee.": "ผลลัพธ์นี้จะใช้สนับสนุนการพูดคุยระหว่าง HR, Manager และพนักงาน", "Target role requirements and current employee profile.": "Target Role Requirements และ Current Employee Profile", "Performance evidence, advisory skill, business exposure, data usage, stakeholder influence, proactive behavior.": "Performance Evidence, Advisory Skill, Business Exposure, Data Usage, Stakeholder Influence, Proactive Behavior", "Readiness Summary, Gap Analysis, Top 3 Priorities, 6-month IDP, and dashboard indicators.": "Readiness Summary, Gap Analysis, Top 3 Priorities, IDP 6 เดือน และ Dashboard Indicators", "Do not decide promotion readiness. Do not invent missing information. State what HR or manager should validate.": "ห้ามตัดสิน Promotion Readiness ห้ามแต่งข้อมูลที่ไม่มี และให้ระบุสิ่งที่ HR หรือ Manager ต้อง Validate", "One HR use case I will try in the next 7 days...": "Use Case ด้าน HR ที่ฉันจะลองใช้ใน 7 วันข้างหน้า...", "What data or input do I need to prepare?": "ฉันต้องเตรียมข้อมูลหรือ Input อะไร?", "What criteria should I use so the output is not generic?": "ควรใช้ Criteria อะไรเพื่อให้ Output ไม่กว้างเกินไป?", "Who needs to review the output before use?": "ใครต้องตรวจ Output ก่อนนำไปใช้?", "What risk should I watch for?": "ต้องระวังความเสี่ยงอะไร?", "One prompt improvement I want to test...": "การปรับ Prompt หนึ่งอย่างที่อยากทดลอง..."};
+const CODE_TH = {"Create an IDP for an employee who wants to become an HRBP.": "สร้าง IDP สำหรับพนักงานที่ต้องการเติบโตเป็น HRBP", "Should this employee be promoted?": "พนักงานคนนี้ควรได้เลื่อนตำแหน่งไหม?", "Create a promotion readiness discussion checklist using performance evidence, target role expectations, competency examples, business need, and missing evidence. Do not decide the promotion outcome.": "สร้าง Promotion Readiness Discussion Checklist โดยใช้ Performance Evidence, Target Role Expectations, Competency Examples, Business Need และ Missing Evidence โดยไม่ตัดสินผล Promotion แทนมนุษย์"};
+const CODE_ID_TH = {"m2_follow": "จากผลวิเคราะห์ Survey ด้านบน ช่วยเสนอ HR Dashboard Indicators จำนวน 5 ตัว โดยแต่ละ Indicator ให้อธิบาย:\n1. วัดอะไร\n2. ทำไมจึงสำคัญ\n3. ต้องใช้ Data Source อะไร\n4. ควรตีความผลสูง / ต่ำอย่างไร\n5. HR ควรทำ Action อะไรต่อ\n\nGuardrail: หาก Data Source ไม่ชัดเจน ให้ระบุว่า “ต้องมีข้อมูลเพิ่มเติม”", "m3_follow": "จาก IDP ด้านบน ช่วยเสนอ Dashboard Indicators เพื่อติดตามว่าการพัฒนาเกิดขึ้นจริงหรือไม่ และความพร้อมของพนักงานดีขึ้นหรือไม่ โดยระบุ:\n1. Indicator\n2. สิ่งที่ติดตาม\n3. เหตุผลที่สำคัญ\n4. Data Source\n5. ความถี่ในการ Review\n6. Owner\n\nGuardrail: ห้ามใช้ Dashboard Indicators เพื่อตัดสิน Promotion แบบอัตโนมัติ"};
+
+function normalizeTextForLang(s){return (s||'').replace(/\s+/g,' ').trim();}
+
+function applyLanguage(lang){
+  window.__LANG__ = lang;
+  localStorage.setItem('hrmaze_lang', lang);
+  document.body.classList.toggle('lang-th', lang==='th');
+  document.querySelectorAll('.lang-toggle').forEach(btn=>btn.textContent = lang==='th' ? 'EN' : 'Thai');
+
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode(node){
+      const p=node.parentElement;
+      if(!p) return NodeFilter.FILTER_REJECT;
+      if(['SCRIPT','STYLE','TEXTAREA'].includes(p.tagName)) return NodeFilter.FILTER_REJECT;
+      if(p.classList.contains('code')) return NodeFilter.FILTER_REJECT;
+      return normalizeTextForLang(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  let n;
+  while(n=walker.nextNode()){
+    if(!n.__en) n.__en = n.nodeValue;
+    const key=normalizeTextForLang(n.__en);
+    if(lang==='th' && I18N_TH[key]){
+      const leading = n.__en.match(/^\s*/)[0];
+      const trailing = n.__en.match(/\s*$/)[0];
+      n.nodeValue = leading + I18N_TH[key] + trailing;
+    } else {
+      n.nodeValue = n.__en;
+    }
+  }
+
+  document.querySelectorAll('textarea[placeholder]').forEach(el=>{
+    if(!el.dataset.enPlaceholder) el.dataset.enPlaceholder = el.getAttribute('placeholder') || '';
+    el.setAttribute('placeholder', lang==='th' && PLACEHOLDER_TH[el.dataset.enPlaceholder] ? PLACEHOLDER_TH[el.dataset.enPlaceholder] : el.dataset.enPlaceholder);
+  });
+
+  document.querySelectorAll('.code').forEach(el=>{
+    if(!el.dataset.enCode) el.dataset.enCode = el.innerText;
+    const id = el.id;
+    const norm = normalizeTextForLang(el.dataset.enCode);
+    if(lang==='th' && id && CODE_ID_TH[id]) el.innerText = CODE_ID_TH[id];
+    else if(lang==='th' && CODE_TH[norm]) el.innerText = CODE_TH[norm];
+    else if(!el.id || !el.id.endsWith('_result')) el.innerText = el.dataset.enCode;
+  });
+
+  refreshStatuses();
+  setTimeout(fit,60);
+}
+
+function toggleLanguage(){
+  applyLanguage(window.__LANG__ === 'th' ? 'en' : 'th');
+}
+
+// Override prompt generation/export text to match selected language.
+function L(en, th){ return window.__LANG__ === 'th' ? th : en; }
+
+function buildPrompt(prefix,fields,includeCriteria){
+  if(!requireFields(prefix))return;
+  let txt='';
+  const map = window.__LANG__ === 'th'
+    ? {goal:'เป้าหมาย',context:'บริบท',data:'ข้อมูล',criteria:'เกณฑ์การวิเคราะห์',output:'รูปแบบผลลัพธ์',guardrail:'ข้อควรระวัง / Guardrails'}
+    : {goal:'Goal',context:'Context',data:'Data',criteria:'Criteria',output:'Output',guardrail:'Guardrails'};
+  fields.forEach(f=>{txt += map[f] + ':\n' + getVal(prefix+'_'+f) + '\n\n';});
+  txt += L('Now create the requested output.','กรุณาสร้างผลลัพธ์ตามที่ระบุไว้ด้านบน');
+  document.getElementById(prefix+'_result').innerText=txt;
+  localStorage.setItem('hrmaze_v3_'+prefix+'_built','1');
+  toast(L('Prompt built','สร้าง Prompt แล้ว'));
+  setTimeout(fit,60);
+}
+
+function copyPrompt(prefix){
+  const text=document.getElementById(prefix+'_result').innerText;
+  if(!localStorage.getItem('hrmaze_v3_'+prefix+'_built')||text.startsWith('Complete')||text.startsWith('กรอก')){toast(L('Build your prompt first','กรุณา Build Prompt ก่อน'));return}
+  copyText(prefix+'_result')
+}
+
+function sectionText(prefix,title){
+  const fields=[...document.querySelectorAll('[data-key^="'+prefix+'_"]')];
+  let sectionTitle = title;
+  if(window.__LANG__==='th'){
+    sectionTitle = title
+      .replace('Mission 1 — HR Communication','Mission 1 — HR Communication')
+      .replace('Mission 2 — Survey Insight Dashboard','Mission 2 — Survey Insight Dashboard')
+      .replace('Mission 3 — Career IDP Dashboard','Mission 3 — Career IDP Dashboard');
+  }
+  let out=sectionTitle+'\n'+'='.repeat(sectionTitle.length)+'\n\n';
+  fields.forEach(el=>{out += el.dataset.key.replace(prefix+'_','').toUpperCase()+':\n'+el.value.trim()+'\n\n';});
+  out += L('GENERATED PROMPT:\n','PROMPT ที่สร้างแล้ว:\n') + document.getElementById(prefix+'_result').innerText + '\n\n';
+  out += L('Reflection:\n1. What did AI do well?\n2. What needs human review?\n3. What would you improve?\n',
+           'Reflection:\n1. AI ทำอะไรได้ดี?\n2. จุดไหนต้องให้มนุษย์ตรวจ?\n3. คุณจะปรับ Prompt อะไรเพิ่มเติม?\n');
+  return out;
+}
+
+function insertSurveySnapshot(){
+  const textEn=`Survey categories and averages:
+- Job Satisfaction: 3.60
+- Relationship with Management: 3.54
+- Engagement: 3.28
+- Work Environment: 3.62
+- Overall Satisfaction: 3.69
+
+Rating scale:
+Strongly Disagree = 1
+Disagree = 2
+Neutral = 3
+Agree = 4
+Strongly Agree = 5
+
+Notable low signals:
+- I feel engaged in the work I do: 2.54
+- I feel a strong connection to my work and my organization: 2.85
+- My supervisor treats me with respect: 2.92
+- I trust the management of this organization: 3.31
+
+Notable stronger signals:
+- My job offers opportunities for professional growth: 4.23
+- My supervisor provides constructive feedback: 4.23
+- My organization promotes a positive work culture: 3.85
+- I can see myself working here in one year's time: 3.85`;
+  const textTh=`หมวดข้อมูล Survey และค่าเฉลี่ย:
+- Job Satisfaction: 3.60
+- Relationship with Management: 3.54
+- Engagement: 3.28
+- Work Environment: 3.62
+- Overall Satisfaction: 3.69
+
+Rating Scale:
+Strongly Disagree = 1
+Disagree = 2
+Neutral = 3
+Agree = 4
+Strongly Agree = 5
+
+สัญญาณที่ควรระวัง:
+- I feel engaged in the work I do: 2.54
+- I feel a strong connection to my work and my organization: 2.85
+- My supervisor treats me with respect: 2.92
+- I trust the management of this organization: 3.31
+
+สัญญาณที่ค่อนข้างแข็งแรง:
+- My job offers opportunities for professional growth: 4.23
+- My supervisor provides constructive feedback: 4.23
+- My organization promotes a positive work culture: 3.85
+- I can see myself working here in one year's time: 3.85`;
+  document.querySelector('[data-key="m2_data"]').value = window.__LANG__==='th' ? textTh : textEn;
+  save(); toast(L('Sample survey snapshot inserted','ใส่ตัวอย่าง Survey Snapshot แล้ว'));
+}
+
+function insertIDPSample(){
+  const textEn=`Target role: HR Business Partner
+Expected capabilities:
+- Understand business priorities and translate them into HR actions
+- Advise managers on people issues, performance, and workforce planning
+- Use HR data to identify people risks and recommend actions
+- Influence stakeholders and build trust
+- Support career, succession, and development conversations
+
+Current employee profile: Senior HR Officer
+Evidence:
+- Strong delivery in HR operations, onboarding, records, and training coordination
+- Positive feedback for responsiveness and attention to detail
+- Limited exposure to business planning discussions
+- Rarely uses HR data to create insight
+- Less confident when discussing issues with senior managers
+- Often waits for assignments rather than proactively identifying people risks
+- Career aspiration: HRBP within 12 months`;
+  const textTh=`Target Role: HR Business Partner
+ความสามารถที่คาดหวัง:
+- เข้าใจ Business Priorities และแปลงเป็น HR Actions ได้
+- ให้คำปรึกษา Manager เรื่อง People Issues, Performance และ Workforce Planning
+- ใช้ HR Data เพื่อระบุ People Risks และเสนอ Actions
+- Influence Stakeholders และสร้างความไว้วางใจ
+- สนับสนุน Career, Succession และ Development Conversations
+
+Current Employee Profile: Senior HR Officer
+Evidence:
+- ทำงาน HR Operations, Onboarding, Records และ Training Coordination ได้ดี
+- ได้ Feedback เชิงบวกเรื่องความรวดเร็วและความละเอียด
+- มี Exposure ต่อ Business Planning Discussions ยังจำกัด
+- ยังไม่ค่อยใช้ HR Data เพื่อสร้าง Insight
+- ยังไม่มั่นใจเมื่อคุยประเด็นกับ Senior Managers
+- มักรอรับโจทย์มากกว่าการระบุ People Risks เชิงรุก
+- Career Aspiration: เติบโตเป็น HRBP ภายใน 12 เดือน`;
+  document.querySelector('[data-key="m3_data"]').value = window.__LANG__==='th' ? textTh : textEn;
+  save(); toast(L('Sample IDP case inserted','ใส่ตัวอย่าง IDP Case แล้ว'));
+}
+
+(function initLanguageToggle(){
+  applyLanguage(window.__LANG__);
+})();
+</script>
+
+</body>
+</html>
